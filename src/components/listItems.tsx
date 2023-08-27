@@ -10,27 +10,44 @@ import PeopleIcon from '@mui/icons-material/People';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import LayersIcon from '@mui/icons-material/Layers';
 import AssignmentIcon from '@mui/icons-material/Assignment';
+import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
+import { Link } from "react-router-dom";
 
 export const mainListItems = (
   <React.Fragment>
-    <ListItemButton>
-      <ListItemIcon>
-        <HomeIcon />
-      </ListItemIcon>
-      <ListItemText primary="Home" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <ShoppingCartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Orders" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <PeopleIcon />
-      </ListItemIcon>
-      <ListItemText primary="Customers" />
-    </ListItemButton>
+    <div className='mainListItem'>
+      <Link to="">
+        <ListItemButton>
+          <ListItemIcon>
+            <HomeIcon />
+          </ListItemIcon>
+          <ListItemText primary="Home" />
+        </ListItemButton>
+      </Link>
+    </div>
+
+    <div className='mainListItem'>
+    <Link to="store">
+      <ListItemButton>
+        <ListItemIcon>
+          <SportsEsportsIcon />
+        </ListItemIcon>
+        <ListItemText primary="Store" />
+      </ListItemButton>
+    </Link>
+    </div>
+
+    <div className='mainListItem'>
+    <Link to="cart">
+      <ListItemButton>
+        <ListItemIcon>
+          <ShoppingCartIcon />
+        </ListItemIcon>
+        <ListItemText primary="Cart" />
+      </ListItemButton>
+    </Link>
+    </div>
+
     <ListItemButton>
       <ListItemIcon>
         <BarChartIcon />

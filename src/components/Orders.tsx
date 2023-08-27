@@ -6,6 +6,10 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Title from './Title';
+import NumberInput from './NumberInput.jsx';
+import AddToCart from './AddToCart.jsx';
+
+
 
 // Generate Order Data
 function createData(

@@ -20,6 +20,8 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { mainListItems, secondaryListItems } from './listItems';
 import OffCanvas from "./Offcanvas.jsx"
 import Orders from './Orders';
+import ItemCards from './ItemCards';
+import { Outlet } from "react-router-dom";
 
 function Copyright(props: any) {
   return (
@@ -151,34 +153,10 @@ export default function Dashboard() {
             {secondaryListItems}
           </List>
         </Drawer>
-        <Box
-          component="main"
-          sx={{
-            backgroundColor: (theme) =>
-              theme.palette.mode === 'light'
-                ? theme.palette.grey[100]
-                : theme.palette.grey[900],
-            flexGrow: 1,
-            height: '100vh',
-            overflow: 'auto',
-          }}
-        >
-          <Toolbar />
-          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-            <Grid container spacing={3}>
-              {/* Chart */}
 
 
-              {/* Recent Orders */}
-              <Grid item xs={12}>
-                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                  <Orders />
-                </Paper>
-              </Grid>
-            </Grid>
-            <Copyright sx={{ pt: 4 }} />
-          </Container>
-        </Box>
+        <Outlet /> 
+
       </Box>
     </ThemeProvider>
   );
