@@ -1,10 +1,35 @@
+body{
+  background-color: #1b2838 !important;
+  color: #c6d4df;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-color: #1b2838;
+  color: #c6d4df;
 }
 
+.toolBar{
+  background-color: #171d25;
+  color: #dcdedf;
+  font-weight: bold;
+}
+
+.me-2{
+  width: 15rem;
+}
+
+.searchBarContainer{
+  position: absolute;
+  left: 8rem;
+}
+
+h1{
+  font-weight: bold !important;
+}
 
 .cardBorder{
   width: 25rem;
@@ -36,6 +61,14 @@
   margin: 150px;
 }
 
+.css-k008qs{
+  display: block !important;
+}
+
+.MuiTableCell-root{
+  color: #c6d4df !important;
+}
+
 #cardButtonContainer{
   display: flex;
   justify-content: space-evenly;
@@ -44,4 +77,60 @@
 .mainListItem a{
   color: black;
   text-decoration: none
+}
+
+.cartPageTable{
+  margin-left: 1.6rem !important;
+}
+
+.cartTrashBtn{
+  border-bottom: none !important;
+  cursor: pointer;
+}
+
+.cartTrashBtn:hover{
+  color: black;
+}
+
+.modal-content{
+  background-color: #1b2838;
+}
+
+.grandTotalCell{
+  border-bottom: none !important;
+}
+
+.offcanvas-title{
+  font-size: 2rem;
+}
+
+.offcanvas-body{
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  cursor: default;
+}
+
+.offcanvasBtn{
+  color: #D2E887;
+  background-color: rgba(121,153,5,1);
+}
+
+.offcanvasBtn:hover{
+  background-color: rgb(146, 167, 71);
+}
+
+.table-dark{
+ margin-top: 5rem;
+ font-size: 1.2rem;
+ border-bottom: 0.5px gray solid;
+}
+
+td{
+  padding: 0 15px;
+  padding-bottom: 1em;
+}
+
+th{
+  padding-bottom: 1em;
+  color: #D2E887;
 }

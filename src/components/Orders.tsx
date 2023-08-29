@@ -1,97 +1,76 @@
 import * as React from 'react';
-import Link from '@mui/material/Link';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Title from './Title';
-import NumberInput from './NumberInput.jsx';
-import AddToCart from './AddToCart.jsx';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { Link } from "react-router-dom";
 
 
 
-// Generate Order Data
-function createData(
-  id: number,
-  date: string,
-  name: string,
-  shipTo: string,
-  paymentMethod: string,
-  amount: number,
-) {
-  return { id, date, name, shipTo, paymentMethod, amount };
-}
 
-const rows = [
-  createData(
-    0,
-    '16 Mar, 2019',
-    'Elvis Presley',
-    'Tupelo, MS',
-    'VISA ⠀•••• 3719',
-    312.44,
-  ),
-  createData(
-    1,
-    '16 Mar, 2019',
-    'Paul McCartney',
-    'London, UK',
-    'VISA ⠀•••• 2574',
-    866.99,
-  ),
-  createData(2, '16 Mar, 2019', 'Tom Scholz', 'Boston, MA', 'MC ⠀•••• 1253', 100.81),
-  createData(
-    3,
-    '16 Mar, 2019',
-    'Michael Jackson',
-    'Gary, IN',
-    'AMEX ⠀•••• 2000',
-    654.39,
-  ),
-  createData(
-    4,
-    '15 Mar, 2019',
-    'Bruce Springsteen',
-    'Long Branch, NJ',
-    'VISA ⠀•••• 5919',
-    212.79,
-  ),
-];
+export default function Orders({gamesInCart, handleDelete, handlePurchase}) {
 
-function preventDefault(event: React.MouseEvent) {
-  event.preventDefault();
-}
+  function findGrandTotal(){
+    var grandTotal = 0
+    for (let x=0 ; x<gamesInCart.length; x++){
+       grandTotal += (gamesInCart[x].price * gamesInCart[x].quantity)
+    }
+    return grandTotal
+  }
 
-export default function Orders() {
   return (
     <React.Fragment>
-      <Title>Recent Orders</Title>
-      <Table size="small">
+      <h2>SHOPPING CART</h2>
+      <br />
+      <Table size="small" className='cartPageTable'>
         <TableHead>
           <TableRow>
-            <TableCell>Date</TableCell>
-            <TableCell>Name</TableCell>
-            <TableCell>Ship To</TableCell>
-            <TableCell>Payment Method</TableCell>
-            <TableCell align="right">Sale Amount</TableCell>
+            <TableCell>Game</TableCell>
+            <TableCell align="center">Amount</TableCell>
+            <TableCell align="center">Price</TableCell>
+            <TableCell align="right">Total</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell>{row.date}</TableCell>
-              <TableCell>{row.name}</TableCell>
-              <TableCell>{row.shipTo}</TableCell>
-              <TableCell>{row.paymentMethod}</TableCell>
-              <TableCell align="right">{`$${row.amount}`}</TableCell>
+          {gamesInCart.map((game) => (
+            <TableRow key={game.name}>
+              <TableCell>{game.name}</TableCell>
+              <TableCell align="center">{game.quantity}</TableCell>
+              <TableCell align="center">${game.price}</TableCell>
+              <TableCell align="right">{`$${game.quantity*game.price}`}</TableCell>
+              <TableCell onClick={() => handleDelete(game.name)} variant="footer" className='cartTrashBtn'><DeleteIcon/></TableCell>
             </TableRow>
           ))}
+          <TableRow >
+            <TableCell className='grandTotalCell'><b>Grand Total:</b></TableCell>
+            <TableCell align="center" className='grandTotalCell'></TableCell>
+            <TableCell align="center" className='grandTotalCell'></TableCell>
+            <TableCell align="right" className='grandTotalCell'><b>${findGrandTotal()}</b></TableCell>
+          </TableRow>
         </TableBody>
       </Table>
-      <Link color="primary" href="#" onClick={preventDefault} sx={{ mt: 3 }}>
-        See more orders
-      </Link>
+      <Link to=""><button type="button" className="btn offcanvasBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">Purchase</button></Link>
+
+      {/* <!-- Modal --> */}
+      <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h1 className="modal-title fs-5" id="exampleModalLabel">Purchase Complete!</h1>
+              <button type="button" className="btn-close" onClick={() => handlePurchase()} data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div className="modal-body">
+              Total spent: ${findGrandTotal()}
+            </div>
+            <div className="modal-footer">
+            <Link to="/"><button type="button" onClick={() => handlePurchase()} className="btn offcanvasBtn" data-bs-dismiss="modal">Return</button></Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </React.Fragment>
   );
 }

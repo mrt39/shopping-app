@@ -4,14 +4,14 @@ import { useEffect, useState } from 'react'
 
 
 
-function ShopPage({handleAddtoCart}) {
+function ShopPage({handleAddtoCart, setQuantity, apiLink}) {
 
   const [allGames, allGamesChange] = useState([]);
   const [hasLoaded, loadedToggle] = useState(false);
 
   //get the first 50 games from the API, and store it in the allGames state
   useEffect(() => {
-       fetch('https://api.rawg.io/api/games?key=e6ddcb78aeda4b678f21e8f6a97890cf&page_size=50')
+       fetch(apiLink)
           .then((res) => res.json())
           .then((data) => {
             allGamesChange(data.results)
@@ -28,15 +28,16 @@ function ShopPage({handleAddtoCart}) {
   return (
     <>  
       {hasLoaded ? 
-        <div id="cardContainer"  >
+        <div id="cardContainer">
         {/* render all items in the allGames array */}
         {allGames.map((game) => {
           return <ItemCards key={game.name}
           name={game.name}  
           handleAddtoCart={handleAddtoCart} 
+          setQuantity={setQuantity}
 /*           isFlipped = {isFlipped}
           handleBlinkClick = {handleBlinkClick} */
-          imgUrl = {game.short_screenshots[0].image}
+          /* imgUrl = {game.short_screenshots[0].image} */
           /* imgUrl = {game.imgUrl} */ 
           />;
           })}

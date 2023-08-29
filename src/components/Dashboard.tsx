@@ -22,6 +22,10 @@ import OffCanvas from "./Offcanvas.jsx"
 import Orders from './Orders';
 import ItemCards from './ItemCards';
 import { Outlet } from "react-router-dom";
+import { redirect } from "react-router-dom";
+import { useState } from "react";
+
+
 
 function Copyright(props: any) {
   return (
@@ -89,10 +93,25 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
-export default function Dashboard() {
+export default function Dashboard({cartBadgeNumber, gamesInCart, handleDelete, changeApiLink}) {
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
+  };
+
+  const [inputVal, setInputVal] = useState("");
+
+  const handleInputChange = (e) => {
+    setInputVal(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    //send the api link with the search tag
+    changeApiLink(`https://api.rawg.io/api/games?key=e6ddcb78aeda4b678f21e8f6a97890cf&search=${inputVal}&page_size=50`)
+
+    return redirect("login");
+
   };
 
   return (
@@ -101,6 +120,7 @@ export default function Dashboard() {
         <CssBaseline />
         <AppBar position="absolute" open={open}>
           <Toolbar
+            className='toolBar'
             sx={{
               pr: '24px', // keep right padding when drawer closed
             }}
@@ -117,6 +137,7 @@ export default function Dashboard() {
             >
               <MenuIcon />
             </IconButton>
+
             <Typography
               component="h1"
               variant="h6"
@@ -124,11 +145,23 @@ export default function Dashboard() {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Dashboard
+              Vapor: The Ultimate Game Store
             </Typography>
+            <div className="searchBarContainer">
+              <form className="d-flex" role="search" onSubmit={handleSubmit}>
+                <input className="form-control me-2" type="search" placeholder="Search for a game!" aria-label="Search" 
+                  value={inputVal}
+                  onChange={handleInputChange}
+                />
+                <button className="btn btn-outline-success" type="submit">Search</button>
+              </form>
+            </div>
             <IconButton color="inherit">
-              <Badge badgeContent={1} color="secondary">
-                <OffCanvas />
+              <Badge badgeContent={cartBadgeNumber} color="secondary">
+                <OffCanvas 
+                gamesInCart={gamesInCart}
+                handleDelete={handleDelete}
+                />
               </Badge>  
             </IconButton>
           </Toolbar>

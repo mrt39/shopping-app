@@ -1,8 +1,10 @@
 import NumberInput from './NumberInput.jsx';
 import AddToCart from './AddToCart.jsx';
+import { useEffect, useState } from 'react'
 
-function ItemCards({name, imgUrl, handleAddtoCart}) {
+function ItemCards({name, imgUrl, handleAddtoCart, setQuantity}) {
 
+  
   //set a price on each game, based on the length of the game's name.
   //this is to make sure each game will always have the same price
   function decidePrice (name){
@@ -32,7 +34,10 @@ function ItemCards({name, imgUrl, handleAddtoCart}) {
             <h5 className="card-title">{name}</h5>
             <h5 className="priceTag"> {decidePrice({name})}$</h5>
             <div id="cardButtonContainer">
-            <NumberInput/>
+            <NumberInput 
+            setQuantity={setQuantity}
+            gameName={name}
+            />
             <a href="#" className="btn" onClick={() => handleAddtoCart({name}, decidePrice({name}))}><AddToCart/></a>
             </div>
         </div>

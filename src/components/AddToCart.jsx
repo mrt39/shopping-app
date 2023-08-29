@@ -67,9 +67,9 @@ export default function UnstyledSnackbarIntroduction() {
                 }}
               />
               <div className="snackbar-message">
-                <p className="snackbar-title">Notifications sent</p>
+                <p className="snackbar-title">Game Added!</p>
                 <p className="snackbar-description">
-                  Everything was sent to the desired address.
+                  Item successfully added to the cart.
                 </p>
               </div>
               <CloseIcon onClick={handleClose} className="snackbar-close-icon" />

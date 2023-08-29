@@ -28,8 +28,10 @@ const CustomNumberInput = React.forwardRef(function CustomNumberInput(props, ref
   );
 });
 
-export default function QuantityInput() {
-  return <CustomNumberInput aria-label="Quantity Input" min={1} max={99} />;
+export default function QuantityInput({setQuantity, gameName}) {
+  return <CustomNumberInput aria-label="Quantity Input" min={1} max={99} 
+  onChange={(event, val) => setQuantity(gameName, val)}
+  />;
 }
 
 const blue = {

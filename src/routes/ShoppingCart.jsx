@@ -1,14 +1,17 @@
 import Orders from '../components/Orders';
 
 
-function ShopPage({gamesInCart}) {
+function ShopPage({gamesInCart, handleDelete, handlePurchase}) {
 
 
     return (
       <>
         <div id="shoppingCartContainer">
-          <p>{gamesInCart}</p>
-            <Orders/>
+            <Orders
+            gamesInCart={gamesInCart}
+            handleDelete={handleDelete}
+            handlePurchase={handlePurchase}
+            />
         </div>
       </>
     )
