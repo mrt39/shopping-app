@@ -28,21 +28,24 @@ function ShopPage({handleAddtoCart, setQuantity, apiLink}) {
   return (
     <>  
       {hasLoaded ? 
-        <div id="cardContainer">
-        {/* render all items in the allGames array */}
-        {allGames.map((game) => {
-          return <ItemCards key={game.name}
-          name={game.name}  
-          handleAddtoCart={handleAddtoCart} 
-          setQuantity={setQuantity}
-/*           isFlipped = {isFlipped}
-          handleBlinkClick = {handleBlinkClick} */
-          /* imgUrl = {game.short_screenshots[0].image} */
-          /* imgUrl = {game.imgUrl} */ 
-          />;
-          })}
-{/*         <ItemCards name={allGames.results[0].name}/> */}
-        </div> 
+      <div>
+        {/* if allgames has any items, display them.*/}
+        {allGames.length > 0 ? 
+        <div className="cardContainer">
+                {/* render all items in the allGames array */}
+                {allGames.map((game) => {
+                  return <ItemCards key={game.name}
+                  name={game.name}  
+                  handleAddtoCart={handleAddtoCart} 
+                  setQuantity={setQuantity}
+                  /* imgUrl = {game.short_screenshots[0].image}  */
+                />;
+                })}
+          </div> 
+          : 
+            <h4 className='storePageNoGamesAlert'>There are no games in the database that match the search!</h4>
+          }
+      </div>
       : "" 
       } 
     </>

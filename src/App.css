@@ -1,3 +1,7 @@
+:root{
+  --neon: hsl(200,100%,50%);
+}
+
 body{
   background-color: #1b2838 !important;
   color: #c6d4df;
@@ -8,7 +12,6 @@ body{
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  background-color: #1b2838;
   color: #c6d4df;
 }
 
@@ -18,24 +21,25 @@ body{
   font-weight: bold;
 }
 
-.me-2{
-  width: 15rem;
-}
-
-.searchBarContainer{
-  position: absolute;
-  left: 8rem;
-}
-
 h1{
   font-weight: bold !important;
+}
+
+.storeDivident{
+  font-weight: bold !important;
+  font-size: 1rem !important;
+  text-align: left;
+}
+
+.storePageNoGamesAlert{
+  margin-top: 10rem;
 }
 
 .cardBorder{
   width: 25rem;
 }
 
-#cardContainer{
+.cardContainer{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -52,8 +56,62 @@ h1{
 }
 
 #homePageContainer{
-  margin: 150px;
+  margin-top: 10rem;
+  width: 100%;
 }
+
+#background-video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+@media (max-width: 750px) {
+  #background-video { display: none; }
+  body {
+    background: url("https://assets.codepen.io/6093409/river.jpg") no-repeat;
+    background-size: cover;
+  }
+}
+
+.searchBarContainer{
+ width: 100%;
+}
+
+.styleBtn{
+  color: var(--neon);
+  text-shadow: 0 0 0.1em var(--neon), 0 0 0.5em var(--neon), 0 0 1em var(--neon);
+  background-color: transparent;
+  border: var(--neon) solid 1px;
+
+}
+
+.styleBtn:hover{
+  background-color: rgb(146, 167, 71);
+  box-shadow: 0 0 0.1em var(--neon), 0 0 0.5em var(--neon), 0 0 1.5em var(--neon), 0 0 3em var(--neon);
+}
+
+.me-2{
+  background-color:transparent;
+  color: white;
+  border: #dcdedf solid 0.5px;
+}
+
+.me-2:focus{
+  background-color: #dcdedf;
+  color: black;
+}
+
+.me-2::placeholder { 
+  color: #dcdedf;
+}
+
 
 #shoppingCartContainer{
   display: flex;
@@ -80,7 +138,7 @@ h1{
 }
 
 .cartPageTable{
-  margin-left: 1.6rem !important;
+  margin-left: 2rem !important;
 }
 
 .cartTrashBtn{
@@ -110,14 +168,7 @@ h1{
   cursor: default;
 }
 
-.offcanvasBtn{
-  color: #D2E887;
-  background-color: rgba(121,153,5,1);
-}
 
-.offcanvasBtn:hover{
-  background-color: rgb(146, 167, 71);
-}
 
 .table-dark{
  margin-top: 5rem;
@@ -131,6 +182,7 @@ td{
 }
 
 th{
+  padding: 0 15px;
   padding-bottom: 1em;
   color: #D2E887;
 }

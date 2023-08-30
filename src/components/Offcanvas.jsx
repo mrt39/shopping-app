@@ -25,8 +25,9 @@ function OffCanvas({gamesInCart, handleDelete}) {
           <h5 className="offcanvas-title" id="offcanvasNavbarDarkLabel">Cart</h5>
           <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
+        {/* only display the table if there are items on the cart */}
+      {gamesInCart.length > 0 && 
         <div className="offcanvas-body">
-
         <table className="table-dark">
           <thead>
             <tr>
@@ -47,8 +48,10 @@ function OffCanvas({gamesInCart, handleDelete}) {
           </tbody>
       </table>
       <p>${findGrandTotal()}</p>
-      <Link to="cart"><button type="button" className="btn offcanvasBtn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarDark">Proceed to Checkout</button></Link>
+      <Link to="cart"><button type="button" className="btn styleBtn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarDark">Proceed to Checkout</button></Link>
         </div>
+
+    }
       </div>
     </>
   )

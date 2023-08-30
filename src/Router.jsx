@@ -136,7 +136,9 @@ const Router = () => {
       />,
 /*       errorElement: <ErrorPage />,*/  
       children: [
-        { index: true, element: <HomePage /> },
+        { index: true, element: <HomePage 
+          changeApiLink ={changeApiLink}
+        /> },
         { path: "store", element: <StorePage 
           handleAddtoCart={handleAddtoCart} 
           setQuantity={setQuantity}

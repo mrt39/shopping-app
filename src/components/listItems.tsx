@@ -110,8 +110,8 @@ export const mainListItems = (
 
 export const secondaryListItems = (
   <React.Fragment>
-    <ListSubheader component="div">
-    <ShoppingCartIcon />STORE
+    <ListSubheader className="storeDivident" component="div" >
+    <SportsEsportsIcon /> <span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; STORE</span>
     </ListSubheader>
 
 

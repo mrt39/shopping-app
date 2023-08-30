@@ -23,6 +23,7 @@ import Orders from './Orders';
 import ItemCards from './ItemCards';
 import { Outlet } from "react-router-dom";
 import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 
@@ -93,26 +94,12 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
-export default function Dashboard({cartBadgeNumber, gamesInCart, handleDelete, changeApiLink}) {
+export default function Dashboard({cartBadgeNumber, gamesInCart, handleDelete}) {
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
   };
 
-  const [inputVal, setInputVal] = useState("");
-
-  const handleInputChange = (e) => {
-    setInputVal(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    //send the api link with the search tag
-    changeApiLink(`https://api.rawg.io/api/games?key=e6ddcb78aeda4b678f21e8f6a97890cf&search=${inputVal}&page_size=50`)
-
-    return redirect("login");
-
-  };
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -147,15 +134,8 @@ export default function Dashboard({cartBadgeNumber, gamesInCart, handleDelete, c
             >
               Vapor: The Ultimate Game Store
             </Typography>
-            <div className="searchBarContainer">
-              <form className="d-flex" role="search" onSubmit={handleSubmit}>
-                <input className="form-control me-2" type="search" placeholder="Search for a game!" aria-label="Search" 
-                  value={inputVal}
-                  onChange={handleInputChange}
-                />
-                <button className="btn btn-outline-success" type="submit">Search</button>
-              </form>
-            </div>
+
+
             <IconButton color="inherit">
               <Badge badgeContent={cartBadgeNumber} color="secondary">
                 <OffCanvas 
