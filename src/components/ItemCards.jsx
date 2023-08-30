@@ -2,7 +2,7 @@ import NumberInput from './NumberInput.jsx';
 import AddToCart from './AddToCart.jsx';
 import { useEffect, useState } from 'react'
 
-function ItemCards({name, imgUrl, handleAddtoCart, setQuantity}) {
+function ItemCards({name, imgUrl, handleAddtoCart, setQuantity, quantityOfEach}) {
 
   
   //set a price on each game, based on the length of the game's name.
@@ -38,7 +38,10 @@ function ItemCards({name, imgUrl, handleAddtoCart, setQuantity}) {
             setQuantity={setQuantity}
             gameName={name}
             />
-            <a href="#" className="btn" onClick={() => handleAddtoCart({name}, decidePrice({name}))}><AddToCart/></a>
+            <a href="#" className="btn" onClick={() => handleAddtoCart({name}, decidePrice({name}))}><AddToCart
+            gameName={name}
+            quantityOfEach={quantityOfEach}
+            /></a>
             </div>
         </div>
     </div>

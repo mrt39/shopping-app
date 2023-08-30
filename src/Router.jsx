@@ -143,6 +143,7 @@ const Router = () => {
           handleAddtoCart={handleAddtoCart} 
           setQuantity={setQuantity}
           apiLink = {apiLink}
+          quantityOfEach={quantityOfEach}
         /> },
         { path: "cart", element: <ShoppingCart 
           gamesInCart={gamesInCart}

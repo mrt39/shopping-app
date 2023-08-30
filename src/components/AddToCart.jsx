@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import * as React from 'react';
 import { Transition } from 'react-transition-group';
 import { styled } from '@mui/system';
@@ -5,7 +6,7 @@ import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
 import CloseIcon from '@mui/icons-material/Close';
 import { Snackbar } from '@mui/base/Snackbar';
 
-export default function UnstyledSnackbarIntroduction() {
+export default function UnstyledSnackbarIntroduction({gameName, quantityOfEach}) {
   const [open, setOpen] = React.useState(false);
   const [exited, setExited] = React.useState(true);
   const nodeRef = React.useRef(null);
@@ -19,7 +20,12 @@ export default function UnstyledSnackbarIntroduction() {
   };
 
   const handleClick = () => {
+    console.log(quantityOfEach)
+    console.log(gameName)
+    if (quantityOfEach.find(element => element.name === gameName)) {
     setOpen(true);
+    }
+
   };
 
   const handleOnEnter = () => {
@@ -69,7 +75,7 @@ export default function UnstyledSnackbarIntroduction() {
               <div className="snackbar-message">
                 <p className="snackbar-title">Game Added!</p>
                 <p className="snackbar-description">
-                  Item successfully added to the cart.
+                  Game successfully added to the cart.
                 </p>
               </div>
               <CloseIcon onClick={handleClose} className="snackbar-close-icon" />

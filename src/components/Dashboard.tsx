@@ -25,6 +25,7 @@ import { Outlet } from "react-router-dom";
 import { redirect } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import logoImage from "../assets/images/logo-v.png"
 
 
 
@@ -132,6 +133,7 @@ export default function Dashboard({cartBadgeNumber, gamesInCart, handleDelete}) 
               noWrap
               sx={{ flexGrow: 1 }}
             >
+              <img className='dashBoardLogoImg' src={logoImage} alt="" />
               Vapor: The Ultimate Game Store
             </Typography>
 

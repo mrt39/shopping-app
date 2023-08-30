@@ -1,10 +1,11 @@
 import ItemCards from '../components/ItemCards';
 import { useEffect, useState } from 'react'
+import logoImage from '../assets/images/logo.png'
 
 
 
 
-function ShopPage({handleAddtoCart, setQuantity, apiLink}) {
+function ShopPage({handleAddtoCart, setQuantity, apiLink, quantityOfEach}) {
 
   const [allGames, allGamesChange] = useState([]);
   const [hasLoaded, loadedToggle] = useState(false);
@@ -38,7 +39,13 @@ function ShopPage({handleAddtoCart, setQuantity, apiLink}) {
                   name={game.name}  
                   handleAddtoCart={handleAddtoCart} 
                   setQuantity={setQuantity}
-                  /* imgUrl = {game.short_screenshots[0].image}  */
+                  quantityOfEach={quantityOfEach}
+                  /* if image exists in the database, pass the image. if not, render a default game image */
+                  {...( (game.background_image !== null) ? {
+                   imgUrl : game.background_image }  
+                   :
+                  { imgUrl : logoImage}
+                )}
                 />;
                 })}
           </div> 
