@@ -26,7 +26,7 @@ import { redirect } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import logoImage from "../assets/images/logo-v.png"
-
+import DashboardListItems from './listItems';
 
 
 function Copyright(props: any) {
@@ -95,7 +95,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
-export default function Dashboard({cartBadgeNumber, gamesInCart, handleDelete}) {
+export default function Dashboard({cartBadgeNumber, gamesInCart, handleDelete, changeApiLink}) {
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
@@ -163,9 +163,9 @@ export default function Dashboard({cartBadgeNumber, gamesInCart, handleDelete}) 
           </Toolbar>
           <Divider />
           <List component="nav">
-            {mainListItems}
-            <Divider sx={{ my: 1 }} />
-            {secondaryListItems}
+            <DashboardListItems
+            changeApiLink ={changeApiLink}
+            />
           </List>
         </Drawer>
 

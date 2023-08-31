@@ -15,7 +15,7 @@ export default function Orders({gamesInCart, handleDelete, handlePurchase}) {
   function findGrandTotal(){
     var grandTotal = 0
     for (let x=0 ; x<gamesInCart.length; x++){
-       grandTotal += (gamesInCart[x].price * gamesInCart[x].quantity)
+       grandTotal += parseInt(gamesInCart[x].price)
     }
     return grandTotal
   }
@@ -30,25 +30,20 @@ export default function Orders({gamesInCart, handleDelete, handlePurchase}) {
           <TableHead>
             <TableRow>
               <TableCell>Game</TableCell>
-              <TableCell align="center">Amount</TableCell>
-              <TableCell align="center">Price</TableCell>
-              <TableCell align="right">Total</TableCell>
+              <TableCell align="right">Price</TableCell>
+
             </TableRow>
           </TableHead>
           <TableBody>
             {gamesInCart.map((game) => (
               <TableRow key={game.name}>
                 <TableCell>{game.name}</TableCell>
-                <TableCell align="center">{game.quantity}</TableCell>
-                <TableCell align="center">${game.price}</TableCell>
-                <TableCell align="right">{`$${game.quantity*game.price}`}</TableCell>
+                <TableCell align="right">${game.price}</TableCell>
                 <TableCell onClick={() => handleDelete(game.name)} variant="footer" className='cartTrashBtn'><DeleteIcon/></TableCell>
               </TableRow>
             ))}
             <TableRow >
-              <TableCell className='grandTotalCell'><b>Grand Total:</b></TableCell>
-              <TableCell align="center" className='grandTotalCell'></TableCell>
-              <TableCell align="center" className='grandTotalCell'></TableCell>
+              <TableCell className='grandTotalCell'><b>Total:</b></TableCell>
               <TableCell align="right" className='grandTotalCell'><b>${findGrandTotal()}</b></TableCell>
             </TableRow>
           </TableBody>

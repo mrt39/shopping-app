@@ -6,7 +6,7 @@ import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
 import CloseIcon from '@mui/icons-material/Close';
 import { Snackbar } from '@mui/base/Snackbar';
 
-export default function UnstyledSnackbarIntroduction({gameName, quantityOfEach}) {
+export default function UnstyledSnackbarIntroduction() {
   const [open, setOpen] = React.useState(false);
   const [exited, setExited] = React.useState(true);
   const nodeRef = React.useRef(null);
@@ -20,12 +20,7 @@ export default function UnstyledSnackbarIntroduction({gameName, quantityOfEach})
   };
 
   const handleClick = () => {
-    console.log(quantityOfEach)
-    console.log(gameName)
-    if (quantityOfEach.find(element => element.name === gameName)) {
     setOpen(true);
-    }
-
   };
 
   const handleOnEnter = () => {
@@ -38,7 +33,7 @@ export default function UnstyledSnackbarIntroduction({gameName, quantityOfEach})
 
   return (
     <React.Fragment>
-      <TriggerButton type="button" onClick={handleClick}>
+      <TriggerButton type="button" className='btn styleBtn' onClick={handleClick}>
         Add to Cart
       </TriggerButton>
       <StyledSnackbar

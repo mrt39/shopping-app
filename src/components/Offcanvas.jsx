@@ -10,7 +10,7 @@ function OffCanvas({gamesInCart, handleDelete}) {
   function findGrandTotal(){
     var grandTotal = 0
     for (let x=0 ; x<gamesInCart.length; x++){
-       grandTotal += (gamesInCart[x].price * gamesInCart[x].quantity)
+       grandTotal += parseInt(gamesInCart[x].price) 
     }
     return grandTotal
   }
@@ -32,16 +32,16 @@ function OffCanvas({gamesInCart, handleDelete}) {
           <thead>
             <tr>
               <th scope="col">Game</th>
-              <th scope="col">Amount</th>
-              <th scope="col">Total</th>
+              <th scope="col"></th>
+              <th scope="col">Price</th>
             </tr>
           </thead>
           <tbody>
           {gamesInCart.map((game) => (
             <tr key={game.name}>
               <td>{game.name}</td>
-              <td>{game.quantity}</td>
-              <td>{`$${game.quantity*game.price}`}</td>
+              <td></td>
+              <td>{`$${game.price}`}</td>
               <td><DeleteIcon onClick={() => handleDelete(game.name)} variant="footer" className='cartTrashBtn'/></td>
             </tr>
              ))}

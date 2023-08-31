@@ -1,15 +1,13 @@
-import NumberInput from './NumberInput.jsx';
 import AddToCart from './AddToCart.jsx';
 import { useEffect, useState } from 'react'
 
-function ItemCards({name, imgUrl, handleAddtoCart, setQuantity, quantityOfEach}) {
+function ItemCards({gameName, imgUrl, handleAddtoCart, gamesInCart}) {
 
-  
   //set a price on each game, based on the length of the game's name.
   //this is to make sure each game will always have the same price
   function decidePrice (name){
 
-    let nameOftheGame = name.name
+    let nameOftheGame = name.gameName
     
     if (nameOftheGame.length > 30){
       return "15"
@@ -25,24 +23,39 @@ function ItemCards({name, imgUrl, handleAddtoCart, setQuantity, quantityOfEach})
     }
   }
 
+  function checkIfInCart(){
+    if (gamesInCart.find(element => element.name === gameName)){
+      return true 
+    }
+  }
+
 
   return (
     <>
     <div className="card cardBorder">
         <img src={imgUrl} className="card-img-top" alt="..."/>
         <div className="card-body">
-            <h5 className="card-title">{name}</h5>
-            <h5 className="priceTag"> {decidePrice({name})}$</h5>
-            <div id="cardButtonContainer">
-            <NumberInput 
-            setQuantity={setQuantity}
-            gameName={name}
-            />
-            <a href="#" className="btn" onClick={() => handleAddtoCart({name}, decidePrice({name}))}><AddToCart
-            gameName={name}
-            quantityOfEach={quantityOfEach}
-            /></a>
-            </div>
+          <div id="cardTitlePriceContainer">            
+            <h5 className="card-title">{gameName}</h5>
+            <h5 className="priceTag"> {decidePrice({gameName})}$</h5>
+          </div>
+
+
+          <div id="cardButtonContainer">
+              {/* if already in cart, render an unclickable button, that says "In Cart" */}
+              {checkIfInCart()? 
+              <a href="#" >
+                <button type="button" className='btn inCartBtn'>In Cart</button>
+                </a>
+                :
+                <a href="#" className="btn" onClick={function() {
+                  handleAddtoCart({gameName}, decidePrice({gameName}))} }>
+                  <AddToCart
+                    gameName={gameName}
+                  />
+                </a>
+              }
+          </div>
         </div>
     </div>
     </>
