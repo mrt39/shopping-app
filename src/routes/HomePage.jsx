@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import backgroundVideo from '../assets/videos/background.mp4'
-
+import SearchIcon from '@mui/icons-material/Search';
 
 
 function HomePage({changeApiLink}) {
@@ -36,7 +36,7 @@ function HomePage({changeApiLink}) {
                   value={inputVal}
                   onChange={handleInputChange}
                 />
-                <button className="btn styleBtn" type="submit">Search</button>
+                <button className="search-button" type="submit"><SearchIcon className="searchIcon"></SearchIcon></button>
               </form>
             </div>
 

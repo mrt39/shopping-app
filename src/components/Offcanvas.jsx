@@ -27,32 +27,28 @@ function OffCanvas({gamesInCart, handleDelete}) {
         </div>
         {/* only display the table if there are items on the cart */}
       {gamesInCart.length > 0 && 
-        <div className="offcanvas-body">
-        <table className="table-dark">
-          <thead>
-            <tr>
-              <th scope="col">Game</th>
-              <th scope="col"></th>
-              <th scope="col">Price</th>
-            </tr>
-          </thead>
-          <tbody>
+        <div id='offcanvasBoxContainer'>
           {gamesInCart.map((game) => (
-            <tr key={game.name}>
-              <td>{game.name}</td>
-              <td></td>
-              <td>{`$${game.price}`}</td>
-              <td><DeleteIcon onClick={() => handleDelete(game.name)} variant="footer" className='cartTrashBtn'/></td>
-            </tr>
-             ))}
-          </tbody>
-      </table>
+                <a key={game.name} className="card4" href="#">
+                <img className="offcanvasgameImg" src= {game.imageUrl.imgUrl} alt="" />
+                <h3>{game.name}</h3>
+                <p className="offcanvasPrice">${game.price}</p>
+                <div className="dimmer"></div>
+                <div className="go-corner" href="#">
+                  <div className="go-arrow">
+                    →
+                  </div>
+                </div>
+              </a>
+          ))}
+
+
       <p>${findGrandTotal()}</p>
       <Link to="cart"><button type="button" className="btn styleBtn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarDark">Proceed to Checkout</button></Link>
-        </div>
 
-    }
       </div>
+      }
+    </div>
     </>
   )
 }

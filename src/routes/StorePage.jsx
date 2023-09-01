@@ -4,9 +4,7 @@ import logoImage from '../assets/images/logo.png'
 import Pagination from '@mui/material/Pagination';
 import { useNavigate } from "react-router-dom";
 
-
-
-/* SNACKBAR SHIT */
+/* SNACKBAR IMPORTS*/
 /* eslint-disable react/prop-types */
 import * as React from 'react';
 import { Transition } from 'react-transition-group';
@@ -14,7 +12,7 @@ import { styled } from '@mui/system';
 import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
 import CloseIcon from '@mui/icons-material/Close';
 import { Snackbar } from '@mui/base/Snackbar';
-
+/* SNACKBAR IMPORTS END */
 
 
 
@@ -76,10 +74,7 @@ function ShopPage({handleAddtoCart, apiLink, gamesInCart, changeApiLink}) {
           }); 
   }, [page, apiLink])
 
-
-
-
-/* SNACKBAR SHIT */
+/* SNACKBAR states and functions */
   const [open, setOpen] = useState(false);
   const [exited, setExited] = useState(true);
   const nodeRef = useRef(null);
@@ -99,16 +94,8 @@ const handleOnEnter = () => {
 const handleOnExited = () => {
   setExited(true);
 };
+/* SNACKBAR states and functions end */
 
-
-
-
-
-
-
-
-
- 
 
   return (
     <>  
@@ -141,12 +128,7 @@ const handleOnExited = () => {
             <h4 className='storePageNoGamesAlert'>There are no games in the database that match the search!</h4>
           }
 
-
-
-
-
-
-<StyledSnackbar
+      <StyledSnackbar
         autoHideDuration={5000}
         open={open}
         onClose={handleClose}
@@ -201,7 +183,7 @@ const handleOnExited = () => {
 
 
 
-
+/* SNACKBAR STYLING */
   const grey = {
     50: '#f6f8fa',
     100: '#eaeef2',
@@ -225,32 +207,6 @@ const handleOnExited = () => {
     900: '#003A75',
   };
   
-  const TriggerButton = styled('button')(
-    ({ theme }) => `
-  font-family: IBM Plex Sans, sans-serif;
-    font-weight: 600;
-    font-size: 0.875rem;
-    line-height: 1.5;
-    background-color: ${blue[500]};
-    padding: 8px 16px;
-    border-radius: 8px;
-    color: white;
-    transition: all 150ms ease;
-    cursor: pointer;
-    border: none;
-    box-shadow: 0px 4px 30px ${theme.palette.mode === 'dark' ? grey[900] : grey[100]};
-  
-    &:hover {
-      background-color: ${blue[600]};
-    }
-  
-    &:focus-visible {
-      box-shadow: 0 3px 20px 0 rgba(61, 71, 82, 0.1), 0 0 0 5px rgba(0, 127, 255, 0.5);
-      outline: none;
-    }
-  
-    `,
-  );
   
   const StyledSnackbar = styled(Snackbar)`
     position: fixed;

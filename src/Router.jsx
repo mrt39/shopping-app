@@ -19,19 +19,12 @@ const Router = () => {
   const [apiLink, toggleApiLink] = useState("");
 
 
-  function handleAddtoCart (gameName, gamePrice){
+  function handleAddtoCart (gameName, gamePrice, imgURL){
     console.log(gameName.gameName)
     console.log(gamePrice)
-
-
-
-
-      //if it does not, add it to the cart
-      console.log("it's not in the cart, added now")
-      updateCart(gamesInCart => [...gamesInCart, {"name": gameName.gameName, "price": gamePrice}])
-      console.log(gamesInCart)
-
-
+      
+    updateCart(gamesInCart => [...gamesInCart, {"name": gameName.gameName, "price": gamePrice, "imageUrl": imgURL}])
+    console.log(gamesInCart)
     
   }
 

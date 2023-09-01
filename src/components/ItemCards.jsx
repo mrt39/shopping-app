@@ -46,7 +46,7 @@ function ItemCards({gameName, imgUrl, handleAddtoCart, gamesInCart, setOpen}) {
                 </a>
                 :
                 <a href="#" className="btn" onClick={function() {
-                  handleAddtoCart({gameName}, decidePrice({gameName}))
+                  handleAddtoCart({gameName}, decidePrice({gameName}),  {imgUrl})
                   setOpen(true)
                   } }>
                   <button type="button" className='btn styleBtn' /* onClick={handleClick} */>
