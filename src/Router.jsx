@@ -24,18 +24,13 @@ const Router = () => {
     console.log(gamePrice)
 
 
-      //if it already exists in the cart, do nothing
-      if (gamesInCart.find(element => element.name === gameName.gameName)){
-        console.log("it's already in cart yo")
-        return
-      }
-      else{
+
 
       //if it does not, add it to the cart
       console.log("it's not in the cart, added now")
       updateCart(gamesInCart => [...gamesInCart, {"name": gameName.gameName, "price": gamePrice}])
       console.log(gamesInCart)
-      }
+
 
     
   }

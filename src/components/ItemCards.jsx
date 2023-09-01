@@ -1,7 +1,4 @@
-import AddToCart from './AddToCart.jsx';
-import { useEffect, useState } from 'react'
-
-function ItemCards({gameName, imgUrl, handleAddtoCart, gamesInCart}) {
+function ItemCards({gameName, imgUrl, handleAddtoCart, gamesInCart, setOpen}) {
 
   //set a price on each game, based on the length of the game's name.
   //this is to make sure each game will always have the same price
@@ -30,6 +27,7 @@ function ItemCards({gameName, imgUrl, handleAddtoCart, gamesInCart}) {
   }
 
 
+
   return (
     <>
     <div className="card cardBorder">
@@ -40,7 +38,6 @@ function ItemCards({gameName, imgUrl, handleAddtoCart, gamesInCart}) {
             <h5 className="priceTag"> {decidePrice({gameName})}$</h5>
           </div>
 
-
           <div id="cardButtonContainer">
               {/* if already in cart, render an unclickable button, that says "In Cart" */}
               {checkIfInCart()? 
@@ -49,10 +46,12 @@ function ItemCards({gameName, imgUrl, handleAddtoCart, gamesInCart}) {
                 </a>
                 :
                 <a href="#" className="btn" onClick={function() {
-                  handleAddtoCart({gameName}, decidePrice({gameName}))} }>
-                  <AddToCart
-                    gameName={gameName}
-                  />
+                  handleAddtoCart({gameName}, decidePrice({gameName}))
+                  setOpen(true)
+                  } }>
+                  <button type="button" className='btn styleBtn' /* onClick={handleClick} */>
+                    Add to Cart
+                  </button>
                 </a>
               }
           </div>
@@ -63,3 +62,4 @@ function ItemCards({gameName, imgUrl, handleAddtoCart, gamesInCart}) {
 }
 
 export default ItemCards
+
