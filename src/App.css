@@ -25,6 +25,16 @@ body{
   font-family: 'Quicksand', sans-serif;
 }
 
+.MuiButtonBase-root, .MuiSvgIcon-root, .MuiPaper-root, .MuiListSubheader-root {
+  color: #dcdedf !important;
+  background-color: #171d25 !important;
+}
+
+.MuiSvgIcon-root{
+  margin-bottom: 5px;
+}
+
+
 .MuiTypography-root{
   font-family: inherit !important;
 }
@@ -53,6 +63,10 @@ h1{
 
 .storePageNoGamesAlert{
   margin-top: 10rem;
+}
+
+.snackbar-title{
+  color: black;
 }
 
 .MuiPagination-root{
@@ -188,6 +202,10 @@ h1{
 .cartTrashBtn{
   border-bottom: none !important;
   cursor: pointer;
+  margin-left: 2px;
+  margin-bottom: 30px;
+  height: 40px;
+  font-family: cursive;
 }
 
 .cartTrashBtn:hover{
@@ -270,7 +288,7 @@ th{
   justify-content: center;
   gap: 30px;
   margin-top: 3rem;
-  margin-left: 10rem;
+  margin-left: 15rem;
   margin-right: 10rem;
   gap: 15px;
 }
@@ -340,6 +358,15 @@ th{
   aspect-ratio: 1.7 / 1;
 }
 
+.offCanvasBtn{
+  margin-top: 2rem;
+  margin-bottom: 6rem;
+}
+
+.offCanvasTotal{
+  margin-top: 2rem;
+}
+
 h3 {
   color: white;
   font-size: 17px;
@@ -363,7 +390,9 @@ p {
     font-size: 14px;
     position: absolute;
     right: 5px;
-    bottom: 1px;
+    bottom: 0px;
+    margin-bottom: 2px;
+
   }
 }
 

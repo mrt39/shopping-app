@@ -20,6 +20,9 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useNavigate } from "react-router-dom";
+import WhatshotIcon from '@mui/icons-material/Whatshot';
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+import GradeIcon from '@mui/icons-material/Grade';
 
 
 
@@ -160,14 +163,14 @@ export default function DashboardListItems({changeApiLink}) {
 
           <ListItemButton onClick={() => handleClick("mostPopular")}>
             <ListItemIcon>
-              <AssignmentIcon />
+              <GradeIcon />
             </ListItemIcon>
             <ListItemText primary="Most Popular" />
           </ListItemButton>
 
           <ListItemButton onClick={() => handleClick("bestOf2023")}>
             <ListItemIcon>
-              <AssignmentIcon />
+              <EmojiEventsIcon />
             </ListItemIcon>
             <ListItemText primary="Best of 2023" />
           </ListItemButton>
@@ -187,7 +190,7 @@ export default function DashboardListItems({changeApiLink}) {
           <AccordionDetails>
             <ListItemButton onClick={() => handleClick("action")}>
               <ListItemIcon >
-                <BarChartIcon  />
+                <WhatshotIcon  />
               </ListItemIcon>
               <ListItemText primary="Action" />
             </ListItemButton>

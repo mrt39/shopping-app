@@ -36,15 +36,16 @@ function OffCanvas({gamesInCart, handleDelete}) {
                 <div className="dimmer"></div>
                 <div className="go-corner" href="#">
                   <div className="go-arrow">
-                    →
+                    <p onClick={() => handleDelete(game.name)} className='cartTrashBtn'>X</p>
+                  {/* <DeleteIcon onClick={() => handleDelete(game.name)} variant="footer" className='cartTrashBtn'/> */}
                   </div>
                 </div>
               </a>
           ))}
 
 
-      <p>${findGrandTotal()}</p>
-      <Link to="cart"><button type="button" className="btn styleBtn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarDark">Proceed to Checkout</button></Link>
+      <h5 className="offCanvasTotal">Total: ${findGrandTotal()}</h5>
+      <Link to="cart"><button type="button" className="btn styleBtn offCanvasBtn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarDark">Proceed to Checkout</button></Link>
 
       </div>
       }
