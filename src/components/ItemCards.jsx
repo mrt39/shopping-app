@@ -1,4 +1,4 @@
-function ItemCards({gameName, imgUrl, handleAddtoCart, gamesInCart, setOpen}) {
+function ItemCards({gameName, imgUrl, handleAddtoCart, gamesInCart, setOpen, handleClickOpen, gameID, gameScreenshots}) {
 
   //set a price on each game, based on the length of the game's name.
   //this is to make sure each game will always have the same price
@@ -30,14 +30,17 @@ function ItemCards({gameName, imgUrl, handleAddtoCart, gamesInCart, setOpen}) {
 
   return (
     <>
+    
     <div className="card cardBorder">
+    <a className='storeCardLink' onClick={() => handleClickOpen({gameID}, {gameScreenshots})} href="#">
         <img src={imgUrl} className="card-img-top" alt="..."/>
         <div className="card-body">
           <div id="cardTitlePriceContainer">            
             <h5 className="card-title">{gameName}</h5>
             <h5 className="priceTag"> {decidePrice({gameName})}$</h5>
           </div>
-
+        </div>
+        </a>
           <div id="cardButtonContainer">
               {/* if already in cart, render an unclickable button, that says "In Cart" */}
               {checkIfInCart()? 
@@ -45,17 +48,17 @@ function ItemCards({gameName, imgUrl, handleAddtoCart, gamesInCart, setOpen}) {
                 <button type="button" className='btn inCartBtn'>In Cart</button>
                 </a>
                 :
-                <a href="#" className="btn" onClick={function() {
+                <a href="#" className="btn addToCartBtn" onClick={function() {
                   handleAddtoCart({gameName}, decidePrice({gameName}),  {imgUrl})
                   setOpen(true)
                   } }>
-                  <button type="button" className='btn styleBtn' /* onClick={handleClick} */>
+                  <button type="button" className='btn styleBtn addToCartBtn' >
                     Add to Cart
                   </button>
                 </a>
               }
           </div>
-        </div>
+       
     </div>
     </>
   )

@@ -25,9 +25,13 @@ body{
   font-family: 'Quicksand', sans-serif;
 }
 
-.MuiButtonBase-root, .MuiSvgIcon-root, .MuiPaper-root, .MuiListSubheader-root {
+.MuiPaper-root, .MuiListSubheader-root, .MuiListItemIcon-root {
   color: #dcdedf !important;
   background-color: #171d25 !important;
+}
+
+.MuiAccordionSummary-expandIconWrapper, .MuiIconButton-sizeMedium{
+  color: #dcdedf !important;
 }
 
 .MuiSvgIcon-root{
@@ -37,6 +41,7 @@ body{
 
 .MuiTypography-root{
   font-family: inherit !important;
+  color: #dcdedf
 }
 
 .MuiAccordionDetails-root{
@@ -63,6 +68,14 @@ h1{
 
 .storePageNoGamesAlert{
   margin-top: 10rem;
+}
+
+.storeCardLink{
+  text-decoration: none;
+}
+
+.css-bf9wz-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected{
+  background-color: var(--neon) ;
 }
 
 .snackbar-title{
@@ -209,7 +222,7 @@ h1{
 }
 
 .cartTrashBtn:hover{
-  color: black;
+  color: var(--neon) !important;
 }
 
 .modal-content{
@@ -324,8 +337,14 @@ th{
   transition: all 0.3s ease;
 }
 
+.storeCardLink{
+  color: #dcdedf;
+}
 
 
+.card-body{
+  padding-bottom: 3px;
+}
 
 /* OFFCANVAS */
 .offcanvas{
@@ -472,3 +491,34 @@ p {
 }
 
 /* OFFCANVAS CARD CSS END*/
+
+
+
+/* GAMEPAGE */
+.css-1t1j96h-MuiPaper-root-MuiDialog-paper {
+  height: 95%;
+  width: 95%;
+  max-width: 100% !important;
+  opacity: 92%;
+  background-color: rgb(15, 16, 17) !important;
+  flex-direction: row !important;
+}
+
+.css-1t1j96h-MuiPaper-root-MuiDialog-paper{
+  align-items: flex-start ;
+}
+
+
+
+/* CAROUSEL */
+.carousel{
+  max-height: 600px;
+}
+
+.carousel-item{
+  max-height: 100%;
+}
+
+.d-block{
+  max-height: 600px;
+}

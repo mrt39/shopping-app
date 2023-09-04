@@ -14,6 +14,9 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Snackbar } from '@mui/base/Snackbar';
 /* SNACKBAR IMPORTS END */
 
+/* GAMEPAGE IMPORT */
+import GamePage from '../components/GamePage.jsx';
+
 
 
 
@@ -62,10 +65,17 @@ function ShopPage({handleAddtoCart, apiLink, gamesInCart, changeApiLink}) {
        fetch(apiLink)
           .then((res) => res.json())
           .then((data) => {
+            //filter porn games 
+            for (let x=0 ; x<(data.results).length; x++){
+              if(data.results[x].tags !== null){
+                if (data.results[x].tags.find(element => element.id === 50)){
+                  data.results.splice(x, 1)  
+                }
+              }
+            }
             allGamesChange(data.results)
             setGameCount(data.count)
             loadedToggle(true)
-            console.log(data[1].name)
             console.log(gameCount)
             handleAddtoCart()
           })
@@ -97,8 +107,33 @@ const handleOnExited = () => {
 /* SNACKBAR states and functions end */
 
 
+/* GAMEPAGE STATES AND FUNCTIONS */
+
+const [gamePageOpen, setGamePageOpen] = useState(false);
+const [gameID, setGameID] = useState(0);
+const [gameScreenshots, setGameScreenshots] = useState([]);
+
+const handleClickOpen = (gameID, gameScreenshots) => {
+  //change the gameid state
+  setGameID(gameID)
+  console.log(gameID)
+  setGameScreenshots(gameScreenshots);
+  console.log(gameScreenshots.gameScreenshots[0])
+  setGamePageOpen(true);
+  
+};
+
+/* GAMEPAGE STATES AND FUNCTIONS END */
+
+
   return (
     <>  
+    <GamePage
+    gameID={gameID}
+    gameScreenshots={gameScreenshots}
+    gamePageOpen={gamePageOpen}
+    setGamePageOpen={setGamePageOpen}
+    />
       {hasLoaded ? 
       <div>
         {/* if allgames has any items, display them.*/}
@@ -108,18 +143,24 @@ const handleOnExited = () => {
                 {/* render all items in the allGames array */}
                 {allGames.map((game) => {
                   return <ItemCards key={game.name}
-                  gameName={game.name}  
+                  gameName={game.name}
+                  gameID={game.id}  
+                  gameScreenshots={game.short_screenshots}
                   handleAddtoCart={handleAddtoCart} 
                   gamesInCart={gamesInCart}
+                  handleClickOpen={handleClickOpen}
                   setOpen={setOpen}
                   /* if image exists in the database, pass the image. if not, render a default game image */
                   {...( (game.background_image !== null) ? {
                    imgUrl : game.background_image }  
                    :
-                  { imgUrl : logoImage}
+                  { imgUrl : logoImage} 
+                  
                 )}
-                />;
+                /> ;
+                
                 })}
+                
           </div> 
           <br /><br />  
           <Pagination siblingCount={2}  size="large" color="primary" count={handlePageCount()}  onChange={handlePageChange} />

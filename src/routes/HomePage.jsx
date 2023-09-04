@@ -17,7 +17,7 @@ function HomePage({changeApiLink}) {
   const handleSubmit = (e) => {
     e.preventDefault();
     //send the api link with the search tag
-    changeApiLink(`https://api.rawg.io/api/games?key=e6ddcb78aeda4b678f21e8f6a97890cf&page_size=39&search=${inputVal}&page=1`)
+    changeApiLink(`https://api.rawg.io/api/games?key=e6ddcb78aeda4b678f21e8f6a97890cf&page_size=39&exclude_stores=4,9&search=${inputVal}&page=1`)
     navigate("/")
     return navigate("/store");
   };
