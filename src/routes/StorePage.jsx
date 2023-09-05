@@ -111,19 +111,41 @@ const handleOnExited = () => {
 
 const [gamePageOpen, setGamePageOpen] = useState(false);
 const [gameID, setGameID] = useState(0);
+const [gamePrice, setGamePrice] = useState(0);
 const [gameScreenshots, setGameScreenshots] = useState([]);
 
-const handleClickOpen = (gameID, gameScreenshots) => {
+const handleClickOpen = (gameID, gamePrice, gameScreenshots) => {
   //change the gameid state
   setGameID(gameID)
   console.log(gameID)
   setGameScreenshots(gameScreenshots);
-  console.log(gameScreenshots.gameScreenshots[0])
-  setGamePageOpen(true);
-  
+  console.log(gameScreenshots.gameScreenshots[0].image)
+  setGamePrice(gamePrice)
+  setGamePageOpen(true);  
 };
 
 /* GAMEPAGE STATES AND FUNCTIONS END */
+
+
+  //set a price on each game, based on the length of the game's name.
+  //this is to make sure games will always have the same price
+  function decidePrice (name){
+
+    let nameOftheGame = name
+    
+    if (nameOftheGame.length > 30){
+      return "15"
+    }
+    else if (nameOftheGame.length > 20){
+      return "20"
+    }
+    else if (nameOftheGame.length > 10){
+      return "40"
+    }
+    else{
+      return "30"
+    }
+  }
 
 
   return (
@@ -133,6 +155,9 @@ const handleClickOpen = (gameID, gameScreenshots) => {
     gameScreenshots={gameScreenshots}
     gamePageOpen={gamePageOpen}
     setGamePageOpen={setGamePageOpen}
+    handleAddtoCart={handleAddtoCart}
+    price={gamePrice}
+    gamesInCart={gamesInCart}
     />
       {hasLoaded ? 
       <div>
@@ -143,6 +168,7 @@ const handleClickOpen = (gameID, gameScreenshots) => {
                 {/* render all items in the allGames array */}
                 {allGames.map((game) => {
                   return <ItemCards key={game.name}
+                  price={decidePrice(game.name)}
                   gameName={game.name}
                   gameID={game.id}  
                   gameScreenshots={game.short_screenshots}

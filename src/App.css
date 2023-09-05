@@ -499,8 +499,7 @@ p {
   height: 95%;
   width: 95%;
   max-width: 100% !important;
-  opacity: 92%;
-  background-color: rgb(15, 16, 17) !important;
+  background-color: rgba(15, 16, 17, 0.92) !important;
   flex-direction: row !important;
 }
 
@@ -508,17 +507,133 @@ p {
   align-items: flex-start ;
 }
 
+#gameStoreLinksContainer{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
 
+#gamePageAddToCartDiv{
+  width: 100%;
+  box-shadow: 0 0 0.1em var(--neon), 0 0 0.5em var(--neon), 0 0 1.5em var(--neon), 0 0 3em var(--neon) ;
+  clip-path: inset(-90px 0px 0px 0px);
+  text-shadow: 0 0 0.1em var(--neon), 0 0 0.5em var(--neon), 0 0 1em var(--neon) ;
+  background: linear-gradient(to right,#D2E887, #007FFF);
+  display: flex;
+  justify-content: space-between;
+  height: fit-content;
+}
+
+#gamePageAddToCartDiv h3{
+  margin-right: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  font-size: 35px;
+
+}
+
+#gamePageAddToCartDiv a{
+  color: #dcdedf;
+  text-decoration: none;
+}
+
+#gamePageContainer{
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  height: 100%;
+  width: 100%;
+  border-radius: 18px;
+}
+
+#carouselContainer{
+  grid-column-start: 1;
+  grid-row-start: 1;
+}
+
+#gameDescriptionContainer{
+  grid-column-start: 1;
+  grid-row-start: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+}
+
+#gameDescription{
+  font-size: 20px;
+  margin-left: 4px;
+  margin-right: 6px;
+  text-align: justify;
+  
+}
+
+#carouselContainer, #gameDescriptionContainer{
+  border-right: #007FFF solid 1px; 
+  box-shadow: 0 0 0.1em var(--neon), 0 0 0.1em var(--neon), 0 0 0.5em var(--neon), 0 0 0.1em var(--neon);
+  clip-path: inset(0px -15px 0px 0px);
+}
+
+#gamePageGameTitle{
+  margin-top: 10px;
+  margin-left: 1px;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+#gamePageInCart{
+  color: #c2f125;
+  user-select: none;
+}
+
+#gamePageStoreLinksText{
+  margin-bottom: 1rem;
+}
+
+#storeIconsContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  width: 300px;
+}
+
+.storeLogo:hover{
+  fill: #007FFF ;
+}
+
+.gamePageCloseBtnX{
+  margin-top: 8px;
+  font-size: 70px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.gamePageCloseBtnX:hover{
+  color: gray;
+}
+
+.gamePageCloseBtn{
+  padding: 0 !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: flex-end;
+  min-width: fit-content !important;
+}
+
+.MuiDialogActions-root{
+ padding: 0 !important;
+
+}
 
 /* CAROUSEL */
-.carousel{
-  max-height: 600px;
-}
-
-.carousel-item{
-  max-height: 100%;
-}
 
 .d-block{
-  max-height: 600px;
+  width: 100%;
+  max-height: 100%; 
+  aspect-ratio: 1.8 / 1;
 }
+

@@ -1,7 +1,7 @@
-function ItemCards({gameName, imgUrl, handleAddtoCart, gamesInCart, setOpen, handleClickOpen, gameID, gameScreenshots}) {
+function ItemCards({gameName, imgUrl, handleAddtoCart, gamesInCart, setOpen, handleClickOpen, gameID, gameScreenshots, price}) {
 
   //set a price on each game, based on the length of the game's name.
-  //this is to make sure each game will always have the same price
+  //this is to make sure games will always have the same price
   function decidePrice (name){
 
     let nameOftheGame = name.gameName
@@ -32,7 +32,7 @@ function ItemCards({gameName, imgUrl, handleAddtoCart, gamesInCart, setOpen, han
     <>
     
     <div className="card cardBorder">
-    <a className='storeCardLink' onClick={() => handleClickOpen({gameID}, {gameScreenshots})} href="#">
+    <a className='storeCardLink' onClick={() => handleClickOpen({gameID}, {price}, {gameScreenshots})} href="#">
         <img src={imgUrl} className="card-img-top" alt="..."/>
         <div className="card-body">
           <div id="cardTitlePriceContainer">            
