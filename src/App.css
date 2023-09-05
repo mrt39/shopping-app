@@ -85,6 +85,7 @@ h1{
 .MuiPagination-root{
   display: flex ;
   justify-content: center;
+  margin-top: 50px;
 }
 
 .MuiPaginationItem-root{
@@ -192,10 +193,12 @@ h1{
   display: flex;
   flex-direction: column;
   margin: 150px;
+  width: 40%;
 }
 
 .css-k008qs{
-  display: block !important;
+  display: flex !important;
+  justify-content: center;
 }
 
 .MuiTableCell-root{
@@ -209,7 +212,7 @@ h1{
 }
 
 .cartPageTable{
-  margin-left: 2rem !important;
+  margin-left: 4.5rem !important;
 }
 
 .cartTrashBtn{
@@ -232,10 +235,6 @@ h1{
 .grandTotalCell{
   border-bottom: none !important;
 }
-
-
-
-
 
 .table-dark{
  margin-top: 5rem;
@@ -299,7 +298,6 @@ th{
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   -webkit-box-pack: center;
   justify-content: center;
-  gap: 30px;
   margin-top: 3rem;
   margin-left: 15rem;
   margin-right: 10rem;
@@ -343,7 +341,8 @@ th{
 
 
 .card-body{
-  padding-bottom: 3px;
+  padding-top: 10px;
+  padding-bottom: 0px;
 }
 
 /* OFFCANVAS */
