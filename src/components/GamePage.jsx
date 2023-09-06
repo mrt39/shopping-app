@@ -20,7 +20,7 @@ export default function MaxWidthDialog({gamePageOpen, setGamePageOpen, gameID, p
 
     //get the details of the game, and store it in the gameDetails state
     useEffect(() => {
-      fetch(`https://api.rawg.io/api/games/${gameID.gameID}?key=e6ddcb78aeda4b678f21e8f6a97890cf`)
+      fetch(`https://api.rawg.io/api/games/${gameID.gameID}?key=${import.meta.env.VITE_API_KEY}`)
          .then((res) => res.json())
          .then((data) => {
           setGameDetails(data)
@@ -32,7 +32,7 @@ export default function MaxWidthDialog({gamePageOpen, setGamePageOpen, gameID, p
 
      //get the store links from the api, and store it in the gameDetails state
      useEffect(() => {
-      fetch(`https://api.rawg.io/api/games/${gameID.gameID}/stores?key=e6ddcb78aeda4b678f21e8f6a97890cf`)
+      fetch(`https://api.rawg.io/api/games/${gameID.gameID}/stores?key=${import.meta.env.VITE_API_KEY}`)
          .then((res) => res.json())
          .then((data) => {
           setStores(data.results)

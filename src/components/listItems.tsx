@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-
 import * as React from 'react';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -84,31 +83,31 @@ export default function DashboardListItems({changeApiLink}) {
     var apiLink = ""
     //change the api link according to the button clicked
     if (categoryName ==="highestRated") {
-      apiLink = `https://api.rawg.io/api/games?key=e6ddcb78aeda4b678f21e8f6a97890cf&page_size=39&stores=1,2,3,5,6,7,11&exclude_stores=4,8,9&ordering=-metacritic&page=1`
+      apiLink = `https://api.rawg.io/api/games?key=${import.meta.env.VITE_API_KEY}&page_size=39&stores=1,2,3,5,6,7,11&exclude_stores=4,8,9&ordering=-metacritic&page=1`
     }
     if (categoryName ==="mostPopular") {
-      apiLink = `https://api.rawg.io/api/games?key=e6ddcb78aeda4b678f21e8f6a97890cf&page_size=39&stores=1,2,3,5,6,7,11&exclude_stores=4,8,9&ordering=-rating&page=1`
+      apiLink = `https://api.rawg.io/api/games?key=${import.meta.env.VITE_API_KEY}&page_size=39&stores=1,2,3,5,6,7,11&exclude_stores=4,8,9&ordering=-rating&page=1`
     }
     if (categoryName ==="newReleases") {
-      apiLink = `https://api.rawg.io/api/games?key=e6ddcb78aeda4b678f21e8f6a97890cf&page_size=39&stores=1,2,3,5,6,7,11&exclude_stores=4,8,9&dates=1960-01-01,${getThisYear()}-12-31&ordering=-released&page=1`
+      apiLink = `https://api.rawg.io/api/games?key=${import.meta.env.VITE_API_KEY}&page_size=39&stores=1,2,3,5,6,7,11&exclude_stores=4,8,9&dates=1960-01-01,${getThisYear()}-12-31&ordering=-released&page=1`
     }
     if (categoryName ==="bestOf2023") {
-      apiLink = `https://api.rawg.io/api/games?key=e6ddcb78aeda4b678f21e8f6a97890cf&page_size=39&stores=1,2,3,5,6,7,11&exclude_stores=4,8,9&ordering=-metacritic&dates=${getThisYear()}-01-01,${getThisYear()}-12-31&page=1`
+      apiLink = `https://api.rawg.io/api/games?key=${import.meta.env.VITE_API_KEY}&page_size=39&stores=1,2,3,5,6,7,11&exclude_stores=4,8,9&ordering=-metacritic&dates=${getThisYear()}-01-01,${getThisYear()}-12-31&page=1`
     }
     if (categoryName ==="action") {
-      apiLink = `https://api.rawg.io/api/games?key=e6ddcb78aeda4b678f21e8f6a97890cf&page_size=39&stores=1,2,3,5,6,7,11&exclude_stores=4,8,9&ordering=-metacritic&genres=action&page=1`
+      apiLink = `https://api.rawg.io/api/games?key=${import.meta.env.VITE_API_KEY}&page_size=39&stores=1,2,3,5,6,7,11&exclude_stores=4,8,9&ordering=-metacritic&genres=action&page=1`
     }
     if (categoryName ==="shooter") {
-      apiLink = `https://api.rawg.io/api/games?key=e6ddcb78aeda4b678f21e8f6a97890cf&page_size=39&stores=1,2,3,5,6,7,11&exclude_stores=4,8,9&ordering=-metacritic&genres=shooter&page=1`
+      apiLink = `https://api.rawg.io/api/games?key=${import.meta.env.VITE_API_KEY}&page_size=39&stores=1,2,3,5,6,7,11&exclude_stores=4,8,9&ordering=-metacritic&genres=shooter&page=1`
     }
     if (categoryName ==="strategy") {
-      apiLink = `https://api.rawg.io/api/games?key=e6ddcb78aeda4b678f21e8f6a97890cf&page_size=39&stores=1,2,3,5,6,7,11&exclude_stores=4,8,9&ordering=-metacritic&genres=strategy&page=1`
+      apiLink = `https://api.rawg.io/api/games?key=${import.meta.env.VITE_API_KEY}&page_size=39&stores=1,2,3,5,6,7,11&exclude_stores=4,8,9&ordering=-metacritic&genres=strategy&page=1`
     }
     if (categoryName ==="rpg") {
-      apiLink = `https://api.rawg.io/api/games?key=e6ddcb78aeda4b678f21e8f6a97890cf&page_size=39&stores=1,2,3,5,6,7,11&exclude_stores=4,8,9&ordering=-metacritic&genres=role-playing-games-rpg&page=1`
+      apiLink = `https://api.rawg.io/api/games?key=${import.meta.env.VITE_API_KEY}&page_size=39&stores=1,2,3,5,6,7,11&exclude_stores=4,8,9&ordering=-metacritic&genres=role-playing-games-rpg&page=1`
     }
     if (categoryName ==="adventure") {
-      apiLink = `https://api.rawg.io/api/games?key=e6ddcb78aeda4b678f21e8f6a97890cf&page_size=39&stores=1,2,3,5,6,7,11&exclude_stores=4,8,9&ordering=-metacritic&genres=adventure&page=1`
+      apiLink = `https://api.rawg.io/api/games?key=${import.meta.env.VITE_API_KEY}&page_size=39&stores=1,2,3,5,6,7,11&exclude_stores=4,8,9&ordering=-metacritic&genres=adventure&page=1`
     }
 
     changeApiLink(apiLink)
