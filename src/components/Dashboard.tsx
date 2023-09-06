@@ -10,24 +10,14 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Badge from '@mui/material/Badge';
-import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
 import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { mainListItems, secondaryListItems } from './listItems';
 import OffCanvas from "./Offcanvas.jsx"
-import Orders from './Orders';
-import ItemCards from './ItemCards';
 import { Outlet, useNavigation } from "react-router-dom";
-import { redirect } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import logoImage from "../assets/images/logo-v.png"
 import DashboardListItems from './listItems';
-import CircularProgress from '@mui/material/CircularProgress';
+
 
 
 
@@ -142,14 +132,14 @@ export default function Dashboard({cartBadgeNumber, gamesInCart, handleDelete, c
             </Typography>
 
 
-            <IconButton color="inherit">
-              <Badge badgeContent={cartBadgeNumber} color="secondary">
+            
+              <Badge className="offCanvasBadge" badgeContent={cartBadgeNumber} color="secondary">
                 <OffCanvas 
                 gamesInCart={gamesInCart}
                 handleDelete={handleDelete}
                 />
               </Badge>  
-            </IconButton>
+          
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>

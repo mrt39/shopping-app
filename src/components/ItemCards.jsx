@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 function ItemCards({gameName, imgUrl, handleAddtoCart, gamesInCart, setOpen, handleClickOpen, gameID, gameScreenshots, price}) {
 
   //set a price on each game, based on the length of the game's name.

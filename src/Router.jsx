@@ -45,8 +45,6 @@ const Router = () => {
   function changeApiLink(link){
 
     toggleApiLink(link)
-    console.log(apiLink)
-
   }
 
 
@@ -54,7 +52,6 @@ const Router = () => {
     useEffect(() => {
 
       updateCartBadgeNumber(gamesInCart.length)
-      console.log("badge number: " +cartBadgeNumber)
 
  }, [gamesInCart])
 

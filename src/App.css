@@ -87,6 +87,10 @@ h1{
   color: black;
 }
 
+.offCanvasBadge{
+  margin-right: 1rem;
+}
+
 .MuiPagination-root{
   display: flex ;
   justify-content: center;

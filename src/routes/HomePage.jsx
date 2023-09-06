@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import backgroundVideo from '../assets/videos/background.mp4'

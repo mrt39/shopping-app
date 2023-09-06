@@ -1,4 +1,4 @@
-import LogoImg from "../assets/images/logo.png"
+/* eslint-disable react/prop-types */
 
 export default function Carousel ({gameScreenshots}) {
 

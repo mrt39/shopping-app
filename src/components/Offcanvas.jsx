@@ -1,5 +1,5 @@
+/* eslint-disable react/prop-types */
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import DeleteIcon from '@mui/icons-material/Delete';
 import { Link } from "react-router-dom";
 
 

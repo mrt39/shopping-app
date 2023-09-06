@@ -1,11 +1,10 @@
 /* eslint-disable react/prop-types */
-import * as React from 'react';
 import { Transition } from 'react-transition-group';
 import { styled } from '@mui/system';
 import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
 import CloseIcon from '@mui/icons-material/Close';
 import { Snackbar } from '@mui/base/Snackbar';
-import { useEffect, useState, useRef } from 'react'
+import { useState, useRef } from 'react'
 
 
 
@@ -96,18 +95,7 @@ const grey = {
     800: '#32383f',
     900: '#24292f',
   };
-  
-  const blue = {
-    200: '#99CCF3',
-    400: '#3399FF',
-    500: '#007FFF',
-    600: '#0072E5',
-    700: '#0059B2',
-    800: '#004C99',
-    900: '#003A75',
-  };
-  
-  
+    
   const StyledSnackbar = styled(Snackbar)`
     position: fixed;
     z-index: 5500;

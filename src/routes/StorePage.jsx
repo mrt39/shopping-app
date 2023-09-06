@@ -1,6 +1,6 @@
-import * as React from 'react';
+/* eslint-disable react/prop-types */
 import ItemCards from '../components/ItemCards';
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import logoImage from '../assets/images/logo-v.png'
 import Pagination from '@mui/material/Pagination';
 import GamePage from '../components/GamePage.jsx';
@@ -69,7 +69,6 @@ function ShopPage({handleAddtoCart, apiLink, gamesInCart, changeApiLink}) {
             allGamesChange(data.results)
             setGameCount(data.count)
             loadedToggle(true)
-            console.log(gameCount)
             handleAddtoCart()
           })
           .catch((err) => {
