@@ -25,6 +25,25 @@ body{
   font-family: 'Quicksand', sans-serif;
 }
 
+.infoIcon{
+  margin-left: 0.3em;
+  height: 1.5em !important;
+  width: 1.5em !important;
+  color: #fece21;
+  cursor: pointer;  
+}
+
+.infoIcon:hover{
+  color: #dcdedf; 
+}
+
+.popOverText{
+  margin: 5px;
+  padding: 5px;
+  width: 30rem;
+  text-wrap: wrap; 
+}
+
 .MuiPaper-root, .MuiListSubheader-root, .MuiListItemIcon-root {
   color: #dcdedf !important;
   background-color: #171d25 !important;
@@ -95,6 +114,7 @@ h1{
   display: flex ;
   justify-content: center;
   margin-top: 50px;
+  margin-bottom: 5rem;
 }
 
 .MuiPaginationItem-root{
@@ -504,8 +524,9 @@ p {
 
 /* GAMEPAGE */
 .css-1t1j96h-MuiPaper-root-MuiDialog-paper {
-  height: 95%;
+  height:100%;
   width: 95%;
+  margin-bottom: 5.5rem !important;
   max-width: 100% !important;
   background-color: rgba(15, 16, 17, 0.92) !important;
   flex-direction: row !important;
@@ -663,3 +684,56 @@ p {
   aspect-ratio: 1.8 / 1;
 }
 
+
+
+/* Footer */
+.footer {
+  position: fixed;
+  text-align: center;
+  bottom: 0;
+  width: 100%;
+  background-color: #171d25 ;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 9999;
+  height: 60px;
+}
+
+.site-footer, .page-wrap:after {
+  height: 60px; 
+}
+
+
+.footer-firstline{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.footer p {
+  background-color: #171d25 ;
+  margin: 20px;
+}
+
+.footer p a {
+  color: #dcdedf;
+  background-color: #171d25 ;
+   
+}
+
+.footer svg {
+  font-size: 12px;
+  background-color: #171d25 ;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.footer svg:hover {
+  fill: gray;
+  transition: fill 0.2s ease;
+}
+
+#svgContainer{
+  background-color: lightskyblue;
+}
