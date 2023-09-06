@@ -5,6 +5,8 @@ import logoImage from '../assets/images/logo-v.png'
 import Pagination from '@mui/material/Pagination';
 import GamePage from '../components/GamePage.jsx';
 import SnackBarComp from '../components/SnackBar.jsx';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 
 
@@ -51,6 +53,8 @@ function ShopPage({handleAddtoCart, apiLink, gamesInCart, changeApiLink}) {
 
   //get the first 50 games from the API, and store it in the allGames state
   useEffect(() => {
+    loadedToggle(false)
+
        fetch(apiLink)
           .then((res) => res.json())
           .then((data) => {
@@ -119,6 +123,7 @@ const handleClickOpen = (gameID, gamePrice, gameScreenshots) => {
 
   return (
     <>  
+    {gamePageOpen ?
     <GamePage
     gameID={gameID}
     gameScreenshots={gameScreenshots}
@@ -128,6 +133,7 @@ const handleClickOpen = (gameID, gamePrice, gameScreenshots) => {
     price={gamePrice}
     gamesInCart={gamesInCart}
     />
+    :""}
       {hasLoaded ? 
       <div>
         {/* if allgames has any items, display them.*/}
@@ -168,7 +174,11 @@ const handleClickOpen = (gameID, gamePrice, gameScreenshots) => {
       setOpen={setOpen}
       open={open}/>
       </div>
-      : "" 
+      : 
+      <Box sx={{ display: 'flex' }}>
+        <CircularProgress  className='circularProgressIcon'
+                size={80}/>
+      </Box>
       } 
     </>
   )

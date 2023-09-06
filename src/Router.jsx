@@ -70,7 +70,6 @@ const Router = () => {
       handleDelete={handleDelete}
       changeApiLink={changeApiLink}
       />,
-/*       errorElement: <ErrorPage />,*/  
       children: [
         { index: true, element: <HomePage 
           changeApiLink ={changeApiLink}

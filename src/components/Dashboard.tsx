@@ -21,12 +21,14 @@ import { mainListItems, secondaryListItems } from './listItems';
 import OffCanvas from "./Offcanvas.jsx"
 import Orders from './Orders';
 import ItemCards from './ItemCards';
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigation } from "react-router-dom";
 import { redirect } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import logoImage from "../assets/images/logo-v.png"
 import DashboardListItems from './listItems';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 
 function Copyright(props: any) {
@@ -101,6 +103,8 @@ export default function Dashboard({cartBadgeNumber, gamesInCart, handleDelete, c
     setOpen(!open);
   };
 
+  const navigation = useNavigation();
+
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -169,8 +173,7 @@ export default function Dashboard({cartBadgeNumber, gamesInCart, handleDelete, c
           </List>
         </Drawer>
 
-
-        <Outlet /> 
+         <Outlet /> 
 
       </Box>
     </ThemeProvider>

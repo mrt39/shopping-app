@@ -2,12 +2,9 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
 import Carousel from "./Carousel.jsx"
 import { useEffect, useState } from 'react'
-import gogLogo from "../assets/images/gogLogo.png"
+
 
 
 export default function MaxWidthDialog({gamePageOpen, setGamePageOpen, gameID, price, gameScreenshots, handleAddtoCart, gamesInCart}) {
@@ -15,7 +12,6 @@ export default function MaxWidthDialog({gamePageOpen, setGamePageOpen, gameID, p
 
   const handleClose = () => {
     setGamePageOpen(false);
-    setGameDetails([])
   };
 
   const [gameDetails, setGameDetails] = useState([]);
@@ -27,6 +23,7 @@ export default function MaxWidthDialog({gamePageOpen, setGamePageOpen, gameID, p
          .then((res) => res.json())
          .then((data) => {
           setGameDetails(data)
+          console.log(gameID);
          })
          .catch((err) => {
            console.log(err.message);
@@ -63,9 +60,6 @@ export default function MaxWidthDialog({gamePageOpen, setGamePageOpen, gameID, p
     setStores(storesWithIcons)
   }
 
-  function handleStoreLinks(){
-
-  }
 
 
   return (
@@ -104,8 +98,82 @@ export default function MaxWidthDialog({gamePageOpen, setGamePageOpen, gameID, p
         
         
           <div id="gameStoreLinksContainer"> 
-                <h2 id='gamePageStoreLinksText'>Store Links:</h2>
+
+              <div id="additionalDataContainer">
+                <div className='gamePagaData'>
+                  <h3 className='gamePagaDataH3'>Release Date:</h3> 
+                  <p>{gameDetails.released}</p>
+                </div>
+                <div className='gamePagaData'>
+                  <h3 className='gamePagaDataH3'>Genres:</h3>
+                  {gameDetails.genres !== undefined &&
+                  <>
+                    {gameDetails.genres.map(genre => 
+                    <p key={genre.name}>
+                      {/* if it's the last item, render it without a comma and a space. if it's not, render it with those. */}
+                    {genre === gameDetails.genres[(gameDetails.genres.length) -1] ?
+                    <> {genre.name} </> 
+                    :
+                    <>{genre.name},&nbsp; </>
+                    }
+                    </p>)} 
+                  </>
+                  }
+                </div>
+                <div className='gamePagaData'>
+                  <h3 className='gamePagaDataH3'>Platforms:</h3>
+                  {gameDetails.platforms !== undefined &&
+                  <>
+                    {gameDetails.platforms.map(platform => 
+                    <p key={platform.platform.name}>
+                      {/* if it's the last item, render it without a comma and a space. if it's not, render it with those. */}
+                    {platform === gameDetails.platforms[(gameDetails.platforms.length) -1] ?
+                    <> {platform.platform.name} </> 
+                    :
+                    <>{platform.platform.name},&nbsp; </>
+                    }
+                    </p>)} 
+                  </>
+                  }
+                </div>
+                <div className='gamePagaData'>
+                  <h3 className='gamePagaDataH3'>Developers:</h3>
+                  {gameDetails.developers !== undefined &&
+                  <>
+                    {gameDetails.developers.map(developer => 
+                    <p key={developer.name}>
+                      {/* if it's the last item, render it without a comma and a space. if it's not, render it with those. */}
+                    {developer === gameDetails.developers[(gameDetails.developers.length) -1] ?
+                    <> {developer.name} </> 
+                    :
+                    <>{developer.name},&nbsp; </>
+                    }
+                    </p>)} 
+                  </>
+                  }
+                </div>
+                <div className='gamePagaData'>
+                  <h3 className='gamePagaDataH3'>Publishers:</h3> 
+                  {gameDetails.publishers !== undefined &&
+                  <>
+                    {gameDetails.publishers.map(publisher => 
+                    <p key={publisher.name}>
+                      {/* if it's the last item, render it without a comma and a space. if it's not, render it with those. */}
+                    {publisher === gameDetails.publishers[(gameDetails.publishers.length) -1] ?
+                    <> {publisher.name} </> 
+                    :
+                    <>{publisher.name},&nbsp; </>
+                    }
+                    </p>)} 
+                  </>
+                  }
+                </div>
+              </div>
+
+
+                
                 <div id="storeIconsContainer">
+                
               {stores.map((store) => {
                 return <a className='storeLogoLink' key={store.store_id} href={store.url}>
                   {store.store_id === 3 &&
@@ -136,7 +204,7 @@ export default function MaxWidthDialog({gamePageOpen, setGamePageOpen, gameID, p
         </div>
 
         <DialogActions>
-          <Button className='gamePageCloseBtn' onClick={handleClose}><p className='gamePageCloseBtnX'>⇦</p></Button>
+          <Button className='gamePageCloseBtn' onClick={handleClose}><p className='gamePageCloseBtnX'><svg width="64px" height="64px" viewBox="0 0 1024 1024" fill="#dcdedf " class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" stroke="#dcdedf "><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M669.6 849.6c8.8 8 22.4 7.2 30.4-1.6s7.2-22.4-1.6-30.4l-309.6-280c-8-7.2-8-17.6 0-24.8l309.6-270.4c8.8-8 9.6-21.6 2.4-30.4-8-8.8-21.6-9.6-30.4-2.4L360.8 480.8c-27.2 24-28 64-0.8 88.8l309.6 280z" fill=""></path></g></svg> </p></Button>
         </DialogActions>
 
       </Dialog>
