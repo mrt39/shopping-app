@@ -34,7 +34,7 @@ function ShopPage({handleAddtoCart, apiLink, gamesInCart, changeApiLink}) {
     else{
        apiLinkMod=apiLink.slice(0, -1)
     }
-    console.log(apiLinkMod+value)
+
     changeApiLink(apiLinkMod+value)
     setPage(value);
     console.log(value)
@@ -54,7 +54,10 @@ function ShopPage({handleAddtoCart, apiLink, gamesInCart, changeApiLink}) {
   //get the first 50 games from the API, and store it in the allGames state
   useEffect(() => {
     loadedToggle(false)
-
+    //change the page to 1 if user clicks on another link on the left tab
+    if(apiLink.slice(-1)==="1"){
+      setPage(1)
+    }
        fetch(apiLink)
           .then((res) => res.json())
           .then((data) => {
@@ -73,7 +76,7 @@ function ShopPage({handleAddtoCart, apiLink, gamesInCart, changeApiLink}) {
           .catch((err) => {
             console.log(err.message);
           }); 
-  }, [page, apiLink])
+  }, [ apiLink])
 
 /* SNACKBAR states and functions */
   const [open, setOpen] = useState(false);
@@ -162,7 +165,7 @@ const handleClickOpen = (gameID, gamePrice, gameScreenshots) => {
                 
           </div> 
           <br /><br />  
-          <Pagination siblingCount={2}  size="large" color="primary" count={handlePageCount()}  onChange={handlePageChange} />
+          <Pagination siblingCount={2}  size="large" color="primary" count={handlePageCount()} page={page} onChange={handlePageChange} />
           </div>
           : 
             <h4 className='storePageNoGamesAlert'>There are no games in the database that match the search!</h4>
