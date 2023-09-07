@@ -20,13 +20,7 @@ const Router = () => {
 
 
   function handleAddtoCart (gameName, gamePrice, imgURL){
-    console.log(gameName.gameName)
-    console.log(gamePrice)
-    console.log(imgURL)
-      
-    updateCart(gamesInCart => [...gamesInCart, {"name": gameName.gameName, "price": gamePrice, "imageUrl": imgURL}])
-    console.log(gamesInCart)
-    
+    updateCart(gamesInCart => [...gamesInCart, {"name": gameName.gameName, "price": gamePrice, "imageUrl": imgURL}])  
   }
 
 

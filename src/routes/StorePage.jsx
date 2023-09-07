@@ -69,7 +69,6 @@ function ShopPage({handleAddtoCart, apiLink, gamesInCart, changeApiLink}) {
             allGamesChange(data.results)
             setGameCount(data.count)
             loadedToggle(true)
-            handleAddtoCart()
           })
           .catch((err) => {
             console.log(err.message);

@@ -523,7 +523,7 @@ p {
 
 
 /* GAMEPAGE */
-.css-1t1j96h-MuiPaper-root-MuiDialog-paper {
+.MuiPaper-elevation24 {
   height:100%;
   width: 95%;
   margin-bottom: 5.5rem !important;
@@ -532,7 +532,7 @@ p {
   flex-direction: row !important;
 }
 
-.css-1t1j96h-MuiPaper-root-MuiDialog-paper{
+.MuiPaper-elevation24{
   align-items: flex-start ;
 }
 
