@@ -1,4 +1,4 @@
-import { createHashRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import { useEffect, useState } from 'react'
 import StorePage from "./routes/StorePage";
@@ -51,7 +51,7 @@ const Router = () => {
 
 
 
-  const router = createHashRouter([
+  const router = createBrowserRouter([
     {
       path: "/",
       errorElement: <ErrorPage />,
