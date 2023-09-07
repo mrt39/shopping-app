@@ -7,7 +7,7 @@ import GamePage from '../components/GamePage.jsx';
 import SnackBarComp from '../components/SnackBar.jsx';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
-
+import moment from 'moment';
 
 
 
@@ -51,6 +51,11 @@ function ShopPage({handleAddtoCart, apiLink, gamesInCart, changeApiLink}) {
     return pageCount
   }
 
+  function getThisYear(){
+    let currentYear = moment().format("YYYY");
+    return currentYear
+  }
+
   //get the first 50 games from the API, and store it in the allGames state
   useEffect(() => {
     loadedToggle(false)
@@ -58,6 +63,12 @@ function ShopPage({handleAddtoCart, apiLink, gamesInCart, changeApiLink}) {
     if(apiLink.slice(-1)==="1"){
       setPage(1)
     }
+
+    //if the user has reached here through clicking on "store" link, which sends no apiLink, change the apilink to best of 2023 games and render those
+    if (apiLink ==="") {
+      changeApiLink(`https://api.rawg.io/api/games?key=${import.meta.env.VITE_API_KEY}&page_size=39&stores=1,2,3,5,6,7,11&exclude_stores=4,8,9&ordering=-metacritic&dates=${getThisYear()}-01-01,${getThisYear()}-12-31&page=1`)
+    }
+
        fetch(apiLink)
           .then((res) => res.json())
           .then((data) => {

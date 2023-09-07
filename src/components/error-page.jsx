@@ -13,7 +13,7 @@ export default function ErrorPage() {
       <p>
         <i>{error.statusText || error.message}</i>
       </p>
-      <Link to="/">
+      <Link to="/shopping-app/">
         <h4>Return to store</h4>
     </Link>
     </div>
