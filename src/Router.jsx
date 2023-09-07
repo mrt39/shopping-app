@@ -53,7 +53,7 @@ const Router = () => {
 
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: "/shopping-app/",
       errorElement: <ErrorPage />,
       element: <Dashboard 
       cartBadgeNumber={cartBadgeNumber}

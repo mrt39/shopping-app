@@ -112,7 +112,7 @@ export default function DashboardListItems({changeApiLink}) {
 
     changeApiLink(apiLink)
     navigate("/");
-    return navigate("/store");
+    return navigate("/shopping-app/store");
   }
 
 

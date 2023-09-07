@@ -62,7 +62,7 @@ export default function Orders({gamesInCart, handleDelete, handlePurchase}) {
                 Total spent: ${findGrandTotal()}
               </div>
               <div className="modal-footer">
-              <Link to="/"><button type="button" onClick={() => handlePurchase()} className="btn styleBtn" data-bs-dismiss="modal">Return</button></Link>
+              <Link to="/shopping-app/"><button type="button" onClick={() => handlePurchase()} className="btn styleBtn" data-bs-dismiss="modal">Return</button></Link>
               </div>
             </div>
           </div>
