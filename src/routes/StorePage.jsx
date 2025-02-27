@@ -175,8 +175,13 @@ const handleClickOpen = (gameID, gamePrice, gameScreenshots) => {
                 })}
                 
           </div> 
-          <br /><br />  
+          <br /><br /> 
+          { 
+          /* if  there are less than 36 items on display, don't display the pagination*/
+          allGames.length > 35 ?
           <Pagination siblingCount={2}  size="large" color="primary" count={handlePageCount()} page={page} onChange={handlePageChange} />
+          :""
+          }
           </div>
           : 
             <h4 className='storePageNoGamesAlert'>There are no games in the database that match the search!</h4>

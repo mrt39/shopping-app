@@ -199,7 +199,6 @@ h1{
   border: var(--neon) solid 1px !important;
   font-family: 'Quicksand', sans-serif !important; 
   cursor: default !important;
-  margin-top: 8px;
 }
 
 .me-2{
@@ -288,38 +287,73 @@ th{
 
 .card{
   margin-top: 0.2rem;
-  height: 17.5rem;
+  min-height: 17.5rem;
   background-color: rgb(32, 32, 32);
   color: #dcdedf;
   border-radius: 18px;
-}
-
-/* card hover */
-.card {
-  -webkit-transition: all 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+ -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   border: none;
   -webkit-box-shadow: 0 1px 7px rgba(0,0,0,.05);
   box-shadow: 0 1px 7px rgba(0,0,0,.05);
 }
+
+
+#cardTitlePriceContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.card-title {
+  /* Allow title to wrap */
+  word-break: break-word;
+  flex: 1;
+  text-align: left;
+  margin-right: 0.5rem;
+}
+
+.priceTag {
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+
+
 .card:hover {
   transform: scale(1.04);
   border: none;
-  height: 21rem;
+  min-height: 21rem;
 }
 
 #cardButtonContainer{
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   opacity: 0;
   max-height:0;
   transition: all 0.3s ease;
+  margin-top: auto; /* Push to bottom of card */
+  width: 100%;
+  padding: 0 0.5rem;
 }
 
 .card:hover #cardButtonContainer {
   transition: all 0.3s ease;
   opacity: 1;
   max-height:40px;
+  margin-bottom: 0.5rem;
+}
+
+/* Make buttons responsive */
+.addToCartBtn, .inCartBtn {
+  width: 100%;
+  white-space: nowrap;
+  font-size: 0.9rem;
 }
 
 .cardContainer{

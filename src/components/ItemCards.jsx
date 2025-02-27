@@ -45,19 +45,19 @@ function ItemCards({gameName, imgUrl, handleAddtoCart, gamesInCart, setOpen, han
         </a>
           <div id="cardButtonContainer">
               {/* if already in cart, render an unclickable button, that says "In Cart" */}
-              {checkIfInCart()? 
-              <a href="#" >
+              {checkIfInCart() ? 
                 <button type="button" className='btn inCartBtn'>In Cart</button>
-                </a>
                 :
-                <a href="#" className="btn addToCartBtn" onClick={function() {
-                  handleAddtoCart({gameName}, decidePrice({gameName}),  {imgUrl})
-                  setOpen(true)
-                  } }>
-                  <button type="button" className='btn styleBtn addToCartBtn' >
-                    Add to Cart
-                  </button>
-                </a>
+                <button 
+                  type="button" 
+                  className='btn styleBtn addToCartBtn'
+                  onClick={() => {
+                    handleAddtoCart({gameName}, decidePrice({gameName}), {imgUrl});
+                    setOpen(true);
+                  }}
+                >
+                  Add to Cart
+                </button>
               }
           </div>
        

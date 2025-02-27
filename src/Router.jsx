@@ -5,7 +5,7 @@ import StorePage from "./routes/StorePage";
 import ShoppingCart from "./routes/ShoppingCart"
 import HomePage from "./routes/HomePage"
 import './App.css'
-import ErrorPage from "./components/error-page";
+import ErrorPage from "./components/ErrorPage";
 
 
 const Router = () => {
