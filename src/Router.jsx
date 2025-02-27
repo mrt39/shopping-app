@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Dashboard from "./components/Dashboard";
+import Dashboard from "./components/Dashboard.jsx";
 import { useEffect, useState } from 'react'
 import StorePage from "./routes/StorePage";
 import ShoppingCart from "./routes/ShoppingCart"
@@ -37,7 +37,6 @@ const Router = () => {
 
   //decides on what api link will be sent to the StorePage component, based on the user's choices
   function changeApiLink(link){
-
     toggleApiLink(link)
   }
 

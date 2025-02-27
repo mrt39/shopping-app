@@ -3,7 +3,7 @@ import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiDrawer from '@mui/material/Drawer';
 import Box from '@mui/material/Box';
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
+import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
@@ -16,36 +16,17 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import OffCanvas from "./Offcanvas.jsx"
 import { Outlet, useNavigation } from "react-router-dom";
 import logoImage from "../assets/images/logo-v.png"
-import DashboardListItems from './listItems';
+import DashboardListItems from './ListItems.jsx';
 import Popover from '@mui/material/Popover';
 import Button from '@mui/material/Button';
 import InfoIcon from '@mui/icons-material/Info';
 
 
-
-
-function Copyright(props: any) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
-const drawerWidth: number = 230;
-
-interface AppBarProps extends MuiAppBarProps {
-  open?: boolean;
-}
+const drawerWidth = 230;
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
-})<AppBarProps>(({ theme, open }) => ({
+})(({ theme, open }) => ({
   zIndex: theme.zIndex.drawer + 1,
   transition: theme.transitions.create(['width', 'margin'], {
     easing: theme.transitions.easing.sharp,

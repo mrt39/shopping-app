@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-import Orders from '../components/Orders';
+import Orders from '../components/Orders.jsx';
 
 
 function ShopPage({gamesInCart, handleDelete, handlePurchase}) {
