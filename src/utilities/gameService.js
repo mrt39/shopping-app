@@ -63,3 +63,32 @@ export function filterAdultContent(data) {
     }
     return data.results;
 }
+
+/*SORT API LINKS FOR THE LEFT SIDEBAR*/
+/*returns API link based on category name */
+export function getCategoryApiLink(categoryName, page = 1) {
+    const commonParams = `key=${API_KEY}&page_size=39&stores=1,2,3,5,6,7,11&exclude_stores=4,8,9&page=${page}`;
+    
+    switch(categoryName) {
+        case 'highestRated':
+            return `${BASE_URL}/games?${commonParams}&ordering=-metacritic`;
+        case 'mostPopular':
+            return `${BASE_URL}/games?${commonParams}&ordering=-rating`;
+        case 'newReleases':
+            return `${BASE_URL}/games?${commonParams}&dates=1960-01-01,${getThisYear()}-12-31&ordering=-released`;
+        case 'bestOfYear':
+            return getBestOfYearLink(page);
+        case 'action':
+            return `${BASE_URL}/games?${commonParams}&ordering=-metacritic&genres=action`;
+        case 'shooter':
+            return `${BASE_URL}/games?${commonParams}&ordering=-metacritic&genres=shooter`;
+        case 'strategy':
+            return `${BASE_URL}/games?${commonParams}&ordering=-metacritic&genres=strategy`;
+        case 'rpg':
+            return `${BASE_URL}/games?${commonParams}&ordering=-metacritic&genres=role-playing-games-rpg`;
+        case 'adventure':
+            return `${BASE_URL}/games?${commonParams}&ordering=-metacritic&genres=adventure`;
+        default:
+            return `${BASE_URL}/games?${commonParams}&ordering=-metacritic`;
+    }
+}

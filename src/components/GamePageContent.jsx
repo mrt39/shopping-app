@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
 import Carousel from './Carousel';
 import GamePageDataSection from './GamePageDataSection';
 
@@ -92,5 +91,5 @@ export default function GamePageContent ({gameDetails, price, gameScreenshots, h
       </div>
     </div>
   );
-};
+}
 

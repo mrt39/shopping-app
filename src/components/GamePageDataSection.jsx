@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
 
 export default function GamePageDataSection ({ title, data, nestedKey = null }) {
   //if it's a simple value like "release date"
@@ -38,5 +37,5 @@ export default function GamePageDataSection ({ title, data, nestedKey = null }) 
       </>
     </div>
   );
-};
+}
 
