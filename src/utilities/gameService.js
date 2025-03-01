@@ -49,7 +49,7 @@ export function getBestOfYearLink(page = 1) {
 
 /*creates API link for searching games */
 export function getSearchLink(searchTerm, page = 1) {
-    return `${BASE_URL}/games?key=${API_KEY}&search=${searchTerm}&page=${page}`;
+    return `${BASE_URL}/games?key=${API_KEY}&page_size=39&stores=1,2,3,5,6,7,11&exclude_stores=4,8,9&search=${searchTerm}&page=${page}`;
 }
 
 /*filters adult content from game results exactly as in the original code */

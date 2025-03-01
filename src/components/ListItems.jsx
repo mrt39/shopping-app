@@ -56,7 +56,7 @@ export default function DashboardListItems({ changeApiLink }) {
       <ListItemBtn 
         icon={<HomeIcon />} 
         text="Home" 
-        to="" 
+        to="/shopping-app" 
       />
       
       <ListItemBtn 

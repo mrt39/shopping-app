@@ -9,7 +9,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 
 //import utilities and hooks
-import { isNumeric, decidePrice, getThisYear } from '../utilities/utils';
+import { isNumeric, decidePrice} from '../utilities/utils';
 import { getBestOfYearLink } from '../utilities/gameService';
 import { useGameData } from '../utilities/useGameData';
 

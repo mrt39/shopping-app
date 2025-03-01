@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import backgroundVideo from '../assets/videos/background.mp4'
 import SearchIcon from '@mui/icons-material/Search';
+import { getSearchLink } from "../utilities/gameService";
 
 
 function HomePage({changeApiLink}) {
@@ -18,7 +19,7 @@ function HomePage({changeApiLink}) {
   const handleSubmit = (e) => {
     e.preventDefault();
     //send the api link with the search tag
-    changeApiLink(`https://api.rawg.io/api/games?key=${import.meta.env.VITE_API_KEY}&page_size=39&stores=1,2,3,5,6,7,11&exclude_stores=4,8,9&search=${inputVal}&page=1`)
+    changeApiLink(getSearchLink(inputVal));
     navigate("/")
     return navigate("/shopping-app/store");
   };
