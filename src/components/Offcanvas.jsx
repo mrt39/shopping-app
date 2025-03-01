@@ -1,19 +1,11 @@
 /* eslint-disable react/prop-types */
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Link } from "react-router-dom";
+import { findGrandTotal } from '../utilities/utils';
 
 
 
-
-function OffCanvas({gamesInCart, handleDelete}) {
-
-  function findGrandTotal(){
-    var grandTotal = 0
-    for (let x=0 ; x<gamesInCart.length; x++){
-       grandTotal += parseInt(gamesInCart[x].price) 
-    }
-    return grandTotal
-  }
+export default function OffCanvas({gamesInCart, handleDelete}) {
 
   return (
     <>
@@ -44,7 +36,7 @@ function OffCanvas({gamesInCart, handleDelete}) {
           ))}
 
 
-      <h5 className="offCanvasTotal">Total: ${findGrandTotal()}</h5>
+      <h5 className="offCanvasTotal">Total: ${findGrandTotal(gamesInCart)}</h5>
       <Link to="cart"><button type="button" className="btn styleBtn offCanvasBtn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarDark">Proceed to Checkout</button></Link>
 
       </div>
@@ -53,5 +45,3 @@ function OffCanvas({gamesInCart, handleDelete}) {
     </>
   )
 }
-
-export default OffCanvas

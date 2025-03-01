@@ -1,9 +1,8 @@
 /* eslint-disable react/prop-types */
-
 import Orders from '../components/Orders.jsx';
 
 
-function ShopPage({gamesInCart, handleDelete, handlePurchase}) {
+function ShoppingCart({gamesInCart, handleDelete, handlePurchase}) {
 
 
     return (
@@ -19,5 +18,5 @@ function ShopPage({gamesInCart, handleDelete, handlePurchase}) {
     )
   }
   
-  export default ShopPage
+  export default ShoppingCart
   

@@ -7,24 +7,19 @@ import GamePage from '../components/GamePage.jsx';
 import SnackBarComp from '../components/SnackBar.jsx';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
-import moment from 'moment';
 
+//import utilities and hooks
+import { isNumeric, decidePrice, getThisYear } from '../utilities/utils';
+import { getBestOfYearLink } from '../utilities/gameService';
+import { useGameData } from '../utilities/useGameData';
 
-
-function ShopPage({handleAddtoCart, apiLink, gamesInCart, changeApiLink}) {
-
-  const [allGames, allGamesChange] = useState([]);
-  const [hasLoaded, loadedToggle] = useState(false);
-  const [gameCount, setGameCount] = useState(0);
+export default function ShopPage({handleAddtoCart, apiLink, gamesInCart, changeApiLink}) {
+  //use the hook for data loading
+  const { allGames, gameCount, hasLoaded } = useGameData(apiLink);
   const [page, setPage] = useState(1);
 
-  //check to see if a string is numeric
-  function isNumeric(n) {
-    return !isNaN(parseFloat(n)) && isFinite(n);
-  }
-
   const handlePageChange = (event, value) => {
-    //apilink comes with the &page=xxx at the end of it, so we check how many of the last characters are numbers and remove the that number, instead add our pagenumber!
+    //apilink comes with the &page=xxx at the end of it, so check how many of the last characters are numbers and remove the that number, instead add our pagenumber!
     if (isNumeric(apiLink.slice(-3))){
       var apiLinkMod=apiLink.slice(0, -3)
     }
@@ -41,7 +36,6 @@ function ShopPage({handleAddtoCart, apiLink, gamesInCart, changeApiLink}) {
     console.log(page)
   };
   
-
   //limit the page count with 100
   const handlePageCount = () => {
     let pageCount = parseInt(gameCount/39)
@@ -51,43 +45,18 @@ function ShopPage({handleAddtoCart, apiLink, gamesInCart, changeApiLink}) {
     return pageCount
   }
 
-  function getThisYear(){
-    let currentYear = moment().format("YYYY");
-    return currentYear
-  }
-
-  //get the first 50 games from the API, and store it in the allGames state
+  //set default API link if none provided
   useEffect(() => {
-    loadedToggle(false)
     //change the page to 1 if user clicks on another link on the left tab
-    if(apiLink.slice(-1)==="1"){
+    if(apiLink && apiLink.slice(-1)==="1"){
       setPage(1)
     }
 
     //if the user has reached here through clicking on "store" link, which sends no apiLink, change the apilink to best of 2023 games and render those
-    if (apiLink ==="") {
-      changeApiLink(`https://api.rawg.io/api/games?key=${import.meta.env.VITE_API_KEY}&page_size=39&stores=1,2,3,5,6,7,11&exclude_stores=4,8,9&ordering=-metacritic&dates=${getThisYear()}-01-01,${getThisYear()}-12-31&page=1`)
+    if (!apiLink) {
+      changeApiLink(getBestOfYearLink());
     }
-
-       fetch(apiLink)
-          .then((res) => res.json())
-          .then((data) => {
-            //filter porn games 
-            for (let x=0 ; x<(data.results).length; x++){
-              if(data.results[x].tags !== null){
-                if (data.results[x].tags.find(element => element.id === 50)){
-                  data.results.splice(x, 1)  
-                }
-              }
-            }
-            allGamesChange(data.results)
-            setGameCount(data.count)
-            loadedToggle(true)
-          })
-          .catch((err) => {
-            console.log(err.message);
-          }); 
-  }, [ apiLink])
+  }, [apiLink, changeApiLink]);
 
 /* SNACKBAR states and functions */
   const [open, setOpen] = useState(false);
@@ -95,43 +64,19 @@ function ShopPage({handleAddtoCart, apiLink, gamesInCart, changeApiLink}) {
 
 
 /* GAMEPAGE STATES AND FUNCTIONS */
+  const [gamePageOpen, setGamePageOpen] = useState(false);
+  const [gameID, setGameID] = useState(0);
+  const [gamePrice, setGamePrice] = useState(0);
+  const [gameScreenshots, setGameScreenshots] = useState([]);
 
-const [gamePageOpen, setGamePageOpen] = useState(false);
-const [gameID, setGameID] = useState(0);
-const [gamePrice, setGamePrice] = useState(0);
-const [gameScreenshots, setGameScreenshots] = useState([]);
-
-const handleClickOpen = (gameID, gamePrice, gameScreenshots) => {
-  //change the gameid state
-  setGameID(gameID)
-  setGameScreenshots(gameScreenshots);
-  setGamePrice(gamePrice)
-  setGamePageOpen(true);  
-};
-
+  const handleClickOpen = (gameID, gamePrice, gameScreenshots) => {
+    //change the gameid state
+    setGameID(gameID);
+    setGameScreenshots(gameScreenshots);
+    setGamePrice(gamePrice);
+    setGamePageOpen(true);  
+  };
 /* GAMEPAGE STATES AND FUNCTIONS END */
-
-
-  //set a price on each game, based on the length of the game's name.
-  //this is to make sure games will always have the same price
-  function decidePrice (name){
-
-    let nameOftheGame = name
-    
-    if (nameOftheGame.length > 30){
-      return "15"
-    }
-    else if (nameOftheGame.length > 20){
-      return "20"
-    }
-    else if (nameOftheGame.length > 10){
-      return "40"
-    }
-    else{
-      return "30"
-    }
-  }
-
 
   return (
     <>  
@@ -199,8 +144,4 @@ const handleClickOpen = (gameID, gamePrice, gameScreenshots) => {
       } 
     </>
   )
-
 }
-  
-  export default ShopPage
-  

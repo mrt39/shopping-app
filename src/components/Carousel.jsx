@@ -1,8 +1,6 @@
 /* eslint-disable react/prop-types */
 
 export default function Carousel ({gameScreenshots}) {
-
-
     return (
         <>
             <div id="carousel" className="carousel slide">

@@ -697,6 +697,7 @@ p {
 
 .gamePagaData{
   display: flex;
+  flex-wrap: wrap;
 }
 
 .gamePagaDataH3{

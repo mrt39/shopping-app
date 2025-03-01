@@ -80,9 +80,7 @@ export default function SnackBarComp({setOpen, open}) {
 }
 
 
-
-
-/* SNACKBAR STYLING */
+/* SNACKBAR STYLING - MUI*/
 const grey = {
     50: '#f6f8fa',
     100: '#eaeef2',
@@ -100,7 +98,7 @@ const grey = {
     position: fixed;
     z-index: 5500;
     display: flex;
-    bottom: 50px;
+    bottom: 62px;
     right: 16px;
     max-width: 560px;
     min-width: 300px;
