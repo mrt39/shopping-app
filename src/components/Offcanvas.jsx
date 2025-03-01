@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { ShoppingCart as ShoppingCartIcon } from '@mui/icons-material';
 import { Link } from "react-router-dom";
 import { findGrandTotal } from '../utilities/utils';
 

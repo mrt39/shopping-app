@@ -2,11 +2,10 @@
 import ItemCards from '../components/ItemCards';
 import { useEffect, useState } from 'react'
 import logoImage from '../assets/images/logo-v.png'
-import Pagination from '@mui/material/Pagination';
+import { Box, CircularProgress, Pagination } from '@mui/material';
 import GamePage from '../components/GamePage.jsx';
 import SnackBarComp from '../components/SnackBar.jsx';
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
+
 
 //import utilities and hooks
 import { isNumeric, decidePrice} from '../utilities/utils';

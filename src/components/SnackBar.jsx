@@ -1,9 +1,8 @@
 /* eslint-disable react/prop-types */
 import { Transition } from 'react-transition-group';
 import { styled } from '@mui/system';
-import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
-import CloseIcon from '@mui/icons-material/Close';
-import { Snackbar } from '@mui/base/Snackbar';
+import { CheckRounded as CheckRoundedIcon, Close as CloseIcon } from '@mui/icons-material';
+import { Snackbar } from '@mui/base';
 import { useState, useRef } from 'react'
 
 

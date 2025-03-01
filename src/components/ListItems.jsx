@@ -1,22 +1,16 @@
 /* eslint-disable react/prop-types */
 import * as React from 'react';
-import ListSubheader from '@mui/material/ListSubheader';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import HomeIcon from '@mui/icons-material/Home';
-import BarChartIcon from '@mui/icons-material/BarChart';
-import LayersIcon from '@mui/icons-material/Layers';
-import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useNavigate } from "react-router-dom";
-import WhatshotIcon from '@mui/icons-material/Whatshot';
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
-import GradeIcon from '@mui/icons-material/Grade';
-import TheaterComedyIcon from '@mui/icons-material/TheaterComedy';
-import ExploreIcon from '@mui/icons-material/Explore';
-import SwitchAccessShortcutIcon from '@mui/icons-material/SwitchAccessShortcut';
+import {
+  Accordion, AccordionDetails, AccordionSummary, ListSubheader
+} from '@mui/material';
+import {
+  BarChart as BarChartIcon, EmojiEvents as EmojiEventsIcon, ExpandMore as ExpandMoreIcon,
+  Explore as ExploreIcon, Grade as GradeIcon, Home as HomeIcon, Layers as LayersIcon,
+  ShoppingCart as ShoppingCartIcon, SportsEsports as SportsEsportsIcon,
+  SwitchAccessShortcut as SwitchAccessShortcutIcon, TheaterComedy as TheaterComedyIcon,
+  Whatshot as WhatshotIcon
+} from '@mui/icons-material';
 
 //import utility functions
 import { getThisYear } from '../utilities/utils';

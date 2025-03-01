@@ -1,24 +1,15 @@
 /* eslint-disable react/prop-types */
 import * as React from 'react';
-import {styled} from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import MuiDrawer from '@mui/material/Drawer';
-import Box from '@mui/material/Box';
-import MuiAppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import Badge from '@mui/material/Badge';
-import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import OffCanvas from "./Offcanvas.jsx"
 import { Outlet} from "react-router-dom";
+import {
+  AppBar as MuiAppBar, Badge, Box, CssBaseline, Divider, Drawer as MuiDrawer,
+  IconButton, List, Popover, Toolbar, Typography
+} from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { ChevronLeft as ChevronLeftIcon, Info as InfoIcon, Menu as MenuIcon } from '@mui/icons-material';
+import OffCanvas from "./Offcanvas.jsx"
 import logoImage from "../assets/images/logo-v.png"
 import DashboardListItems from './ListItems.jsx';
-import Popover from '@mui/material/Popover';
-import InfoIcon from '@mui/icons-material/Info';
 
 
 

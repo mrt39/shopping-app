@@ -1,8 +1,6 @@
 /* eslint-disable react/prop-types */
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
 import { Link } from "react-router-dom";
+import { ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 
 
 /*ListItemBtn - a reusable navigation component for ListItems.jsx */

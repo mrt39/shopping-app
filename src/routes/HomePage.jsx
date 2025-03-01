@@ -2,7 +2,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import backgroundVideo from '../assets/videos/background.mp4'
-import SearchIcon from '@mui/icons-material/Search';
+import { Search as SearchIcon } from '@mui/icons-material';
 import { getSearchLink } from "../utilities/gameService";
 
 
