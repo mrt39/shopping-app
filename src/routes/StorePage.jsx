@@ -6,13 +6,19 @@ import { Box, CircularProgress, Pagination } from '@mui/material';
 import GamePage from '../components/GamePage.jsx';
 import SnackBarComp from '../components/SnackBar.jsx';
 
+//import contexts
+import { useGames } from '../contexts/GamesContext';
 
 //import utilities and hooks
 import { isNumeric, decidePrice} from '../utilities/utils';
 import { getBestOfYearLink } from '../utilities/gameService';
 import { useGameData } from '../utilities/useGameData';
 
-export default function ShopPage({handleAddtoCart, apiLink, gamesInCart, changeApiLink}) {
+export default function ShopPage() {
+
+  //use contexts instead of props
+  const { apiLink, changeApiLink } = useGames();
+
   //use the hook for data loading
   const { allGames, gameCount, hasLoaded } = useGameData(apiLink);
   const [page, setPage] = useState(1);
@@ -31,8 +37,6 @@ export default function ShopPage({handleAddtoCart, apiLink, gamesInCart, changeA
 
     changeApiLink(apiLinkMod+value)
     setPage(value);
-    console.log(value)
-    console.log(page)
   };
   
   //limit the page count with 100
@@ -81,13 +85,11 @@ export default function ShopPage({handleAddtoCart, apiLink, gamesInCart, changeA
     <>  
     {gamePageOpen ?
     <GamePage
-    gameID={gameID}
-    gameScreenshots={gameScreenshots}
-    gamePageOpen={gamePageOpen}
-    setGamePageOpen={setGamePageOpen}
-    handleAddtoCart={handleAddtoCart}
-    price={gamePrice}
-    gamesInCart={gamesInCart}
+      gameID={gameID}
+      gameScreenshots={gameScreenshots}
+      gamePageOpen={gamePageOpen}
+      setGamePageOpen={setGamePageOpen}
+      price={gamePrice}
     />
     :""}
       {hasLoaded ? 
@@ -99,14 +101,12 @@ export default function ShopPage({handleAddtoCart, apiLink, gamesInCart, changeA
                 {/* render all items in the allGames array */}
                 {allGames.map((game) => {
                   return <ItemCards key={game.name}
-                  price={decidePrice(game.name)}
-                  gameName={game.name}
-                  gameID={game.id}  
-                  gameScreenshots={game.short_screenshots}
-                  handleAddtoCart={handleAddtoCart} 
-                  gamesInCart={gamesInCart}
-                  handleClickOpen={handleClickOpen}
-                  setOpen={setOpen}
+                    price={decidePrice(game.name)}
+                    gameName={game.name}
+                    gameID={game.id}  
+                    gameScreenshots={game.short_screenshots}
+                    handleClickOpen={handleClickOpen}
+                    setOpen={setOpen}
                   /* if image exists in the database, pass the image. if not, render a default game image */
                   {...( (game.background_image !== null) ? {
                    imgUrl : game.background_image }  

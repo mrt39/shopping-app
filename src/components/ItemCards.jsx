@@ -1,8 +1,11 @@
 /* eslint-disable react/prop-types */
 import { decidePrice, checkIfInCart } from '../utilities/utils';
+import { useCart } from '../contexts/CartContext';
 
 
-export default function ItemCards({gameName, imgUrl, handleAddtoCart, gamesInCart, setOpen, handleClickOpen, gameID, gameScreenshots, price}) {
+export default function ItemCards({gameName, imgUrl, setOpen, handleClickOpen, gameID, gameScreenshots, price}) {
+
+  const {handleAddToCart, gamesInCart } = useCart();
 
   return (
     <>
@@ -25,7 +28,7 @@ export default function ItemCards({gameName, imgUrl, handleAddtoCart, gamesInCar
                   type="button" 
                   className='btn styleBtn addToCartBtn'
                   onClick={() => {
-                    handleAddtoCart({gameName}, decidePrice({gameName}), {imgUrl});
+                    handleAddToCart({gameName}, decidePrice({gameName}), {imgUrl});
                     setOpen(true);
                   }}
                 >

@@ -3,19 +3,15 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 import { Delete as DeleteIcon } from '@mui/icons-material';
+import { findGrandTotal } from '../utilities/utils';
+import { useCart } from '../contexts/CartContext';
 
 
 
+export default function Orders() {
 
-export default function Orders({gamesInCart, handleDelete, handlePurchase}) {
+  const { gamesInCart, handleDelete, handlePurchase } = useCart();
 
-  function findGrandTotal(){
-    var grandTotal = 0
-    for (let x=0 ; x<gamesInCart.length; x++){
-       grandTotal += parseInt(gamesInCart[x].price)
-    }
-    return grandTotal
-  }
 
   return (
     <>
@@ -41,7 +37,7 @@ export default function Orders({gamesInCart, handleDelete, handlePurchase}) {
             ))}
             <TableRow >
               <TableCell className='grandTotalCell'><b>Total:</b></TableCell>
-              <TableCell align="right" className='grandTotalCell'><b>${findGrandTotal()}</b></TableCell>
+              <TableCell align="right" className='grandTotalCell'><b>${findGrandTotal(gamesInCart)}</b></TableCell>
             </TableRow>
           </TableBody>
         </Table>
@@ -56,7 +52,7 @@ export default function Orders({gamesInCart, handleDelete, handlePurchase}) {
                 <button type="button" className="btn-close" onClick={() => handlePurchase()} data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div className="modal-body">
-                Total spent: ${findGrandTotal()}
+                Total spent: ${findGrandTotal(gamesInCart)}
               </div>
               <div className="modal-footer">
               <Link to="/shopping-app/"><button type="button" onClick={() => handlePurchase()} className="btn styleBtn" data-bs-dismiss="modal">Return</button></Link>

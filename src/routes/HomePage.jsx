@@ -4,9 +4,12 @@ import { useState } from "react";
 import backgroundVideo from '../assets/videos/background.mp4'
 import { Search as SearchIcon } from '@mui/icons-material';
 import { getSearchLink } from "../utilities/gameService";
+import { useGames } from '../contexts/GamesContext';
+
+function HomePage() {
 
 
-function HomePage({changeApiLink}) {
+  const { changeApiLink } = useGames();
 
   const [inputVal, setInputVal] = useState("");
 

@@ -2,17 +2,13 @@
 import Orders from '../components/Orders.jsx';
 
 
-function ShoppingCart({gamesInCart, handleDelete, handlePurchase}) {
+function ShoppingCart() {
 
 
     return (
       <>
         <div id="shoppingCartContainer">
-            <Orders
-            gamesInCart={gamesInCart}
-            handleDelete={handleDelete}
-            handlePurchase={handlePurchase}
-            />
+            <Orders/>
         </div>
       </>
     )

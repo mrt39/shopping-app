@@ -12,15 +12,20 @@ import {
   Whatshot as WhatshotIcon
 } from '@mui/icons-material';
 
+//import context
+import { useGames } from '../contexts/GamesContext';
+
 //import utility functions
 import { getThisYear } from '../utilities/utils';
 import { getCategoryApiLink } from '../utilities/gameService';
 import ListItemBtn from './ListItemsBtn';
 
-export default function DashboardListItems({ changeApiLink }) { 
+export default function DashboardListItems( ) { 
+
+  //use context
+  const { changeApiLink } = useGames();
   const navigate = useNavigate();
   
-
   //handle category selection and navigation
   function handleClick(categoryName) {
     //get the API link for the selected category

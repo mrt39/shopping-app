@@ -10,15 +10,19 @@ import { ChevronLeft as ChevronLeftIcon, Info as InfoIcon, Menu as MenuIcon } fr
 import OffCanvas from "./Offcanvas.jsx"
 import logoImage from "../assets/images/logo-v.png"
 import DashboardListItems from './ListItems.jsx';
+import {useCart} from '../contexts/CartContext.jsx';
 
 
 
-export default function Dashboard({cartBadgeNumber, gamesInCart, handleDelete, changeApiLink}) {
+export default function Dashboard() {
+  
+  //use the cart context
+  const {cartBadgeNumber, gamesInCart, handleDelete } = useCart();
+  
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
   };
-
 
   /* POPOVER STATES AND FUNCTIONS START*/
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -112,9 +116,7 @@ export default function Dashboard({cartBadgeNumber, gamesInCart, handleDelete, c
           </Toolbar>
           <Divider />
           <List component="nav">
-            <DashboardListItems
-            changeApiLink ={changeApiLink}
-            />
+            <DashboardListItems/>
           </List>
         </Drawer>
 
