@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 
 export function usePagination(initialApiLink, changeApiLink) {
   const [page, setPage] = useState(1);
@@ -26,7 +26,9 @@ export function usePagination(initialApiLink, changeApiLink) {
     }
   }, [initialApiLink]);
 
-  const handlePageChange = (event, value) => {
+  //useCallback memoizes this function to prevent re-creation on every render
+  //important since handlePageChange is passed to the Pagination component and would cause unnecessary re-renders if it changed on every render
+  const handlePageChange = useCallback((event, value) => {
     //create URL object from current API link to properly manipulate parameters
     const url = new URL(initialApiLink, 'https://example.com');
     
@@ -41,9 +43,10 @@ export function usePagination(initialApiLink, changeApiLink) {
     
     //update local page state to ensure UI reflects the correct page
     setPage(value);
-  };
+  }, [initialApiLink, changeApiLink]);
 
-  const handlePageCount = (gameCount) => {
+  //using useCallback 
+  const handlePageCount = useCallback((gameCount) => {
     //calculate total pages by dividing total games by items per page (39)
     let pageCount = Math.max(1, parseInt(gameCount / 39));
     
@@ -52,12 +55,14 @@ export function usePagination(initialApiLink, changeApiLink) {
       pageCount = 100;
     }
     return pageCount;
-  };
+  }, []);
 
-  return {
+  //useMemo prevents recreation of the return object on every render
+  //this is important since many components depend on this hook's return value
+  return useMemo(() => ({
     page,
     setPage,
     handlePageChange,
     handlePageCount
-  };
+  }), [page, handlePageChange, handlePageCount]);
 }

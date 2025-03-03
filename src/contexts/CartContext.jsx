@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { createContext, useState, useContext, useEffect } from 'react';
+import { createContext, useState, useContext, useEffect, useCallback, useMemo } from 'react';
 
 const CartContext = createContext();
 
@@ -11,13 +11,15 @@ export function CartProvider({ children }) {
   const [gamesInCart, setGamesInCart] = useState([]);
   const [cartBadgeNumber, setCartBadgeNumber] = useState(0);
 
-  // Update badge number whenever cart changes
+  //update badge number whenever cart changes
   useEffect(() => {
     setCartBadgeNumber(gamesInCart.length);
   }, [gamesInCart]);
 
-  // Add game to cart
-  function handleAddToCart(gameName, gamePrice, imgURL) {
+  //add game to cart
+  //useCallback prevents recreation of this function between renders, stabilizing the reference
+  //this minimizes unnecessary re-renders in components that use this function
+  const handleAddToCart = useCallback((gameName, gamePrice, imgURL) => {
     setGamesInCart(prevCart => [
       ...prevCart, 
       {
@@ -26,25 +28,27 @@ export function CartProvider({ children }) {
         "imageUrl": imgURL
       }
     ]);
-  }
+  }, []);
 
-  // Remove game from cart
-  function handleDelete(gameName) {
-    setGamesInCart(gamesInCart.filter(element => element.name !== gameName));
-  }
+  //remove game from cart while using useCallback
+  const handleDelete = useCallback((gameName) => {
+    setGamesInCart(prevCart => prevCart.filter(element => element.name !== gameName));
+  }, []);
 
-  // Clear cart after purchase
-  function handlePurchase() {
+  //clear cart after purchase while using useCallback
+  const handlePurchase = useCallback(() => {
     setGamesInCart([]);
-  }
+  }, []);
 
-  const value = {
+  //useMemo prevents recreation of the context value object on each render
+  //it prevents all components that use these from re-rendering when unrelated states change
+  const value = useMemo(() => ({
     gamesInCart,
     cartBadgeNumber,
     handleAddToCart,
     handleDelete,
     handlePurchase
-  };
+  }), [gamesInCart, cartBadgeNumber, handleAddToCart, handleDelete, handlePurchase]);
 
   return (
     <CartContext.Provider value={value}>

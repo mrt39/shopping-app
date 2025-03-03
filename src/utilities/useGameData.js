@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { getBestOfYearLink, filterAdultContent } from './gameService';
 
 /*custom hook for fetching game data from API */
@@ -6,7 +6,6 @@ export function useGameData(apiLink) {
     const [allGames, setAllGames] = useState([]);
     const [hasLoaded, setHasLoaded] = useState(false);
     const [gameCount, setGameCount] = useState(0);
-    const [error, setError] = useState(null);
     
     useEffect(() => {
         setHasLoaded(false);
@@ -15,17 +14,20 @@ export function useGameData(apiLink) {
         const linkToUse = apiLink || getBestOfYearLink();
         
         fetch(linkToUse)
-            .then((res) => res.json())
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error(`API request failed with status: ${res.status}`);
+                }
+                return res.json();
+            })
             .then((data) => {
                 //filter adult content
                 const filteredGames = filterAdultContent(data);
                 setAllGames(filteredGames);
                 setGameCount(data.count);
-                setError(null);
             })
             .catch((err) => {
-                console.log(err.message);
-                setError(err.message);
+                console.error("Game data fetch error:", err.message);
                 setAllGames([]);
             })
             .finally(() => {
@@ -33,5 +35,11 @@ export function useGameData(apiLink) {
             });
     }, [apiLink]);
 
-    return { allGames, gameCount, hasLoaded, error };
+    //useMemo prevents recreation of the return object on every render
+    //this only recalculates when allGames, gameCount, or hasLoaded actually change
+    return useMemo(() => ({ 
+        allGames, 
+        gameCount, 
+        hasLoaded 
+    }), [allGames, gameCount, hasLoaded]);
 }

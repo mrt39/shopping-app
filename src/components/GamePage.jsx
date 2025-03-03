@@ -4,11 +4,13 @@ import { useEffect, useState } from 'react'
 import { Button, Dialog, DialogActions } from '@mui/material';
 import { checkIfInCart } from '../utilities/utils';
 import { fetchGameDetails, fetchGameStores } from '../utilities/gameService';
+import { useCart } from '../contexts/CartContext'; 
 import GamePageContent from './GamePageContent';
 
 
-export default function GamePage({gamePageOpen, setGamePageOpen, gameID, price, gameScreenshots, handleAddtoCart, gamesInCart}) {
+export default function GamePage({gamePageOpen, setGamePageOpen, gameID, price, gameScreenshots}) {
 
+  const { gamesInCart, handleAddToCart } = useCart();
 
   const handleClose = () => {
     setGamePageOpen(false);
@@ -55,7 +57,7 @@ export default function GamePage({gamePageOpen, setGamePageOpen, gameID, price, 
           gameDetails={gameDetails}
           price={price}
           gameScreenshots={gameScreenshots}
-          handleAddtoCart={handleAddtoCart}
+          handleAddToCart={handleAddToCart}
           gamesInCart={gamesInCart}
           stores={stores}
           checkIfInCart={checkIfInCart}

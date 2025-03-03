@@ -3,14 +3,38 @@ import { getThisYear } from './utils';
 const API_KEY = import.meta.env.VITE_API_KEY;
 const BASE_URL = 'https://api.rawg.io/api';
 
-/*function to fetch data from the RAWG API */
+//cache object - stores API responses keyed by endpoint URL
+//this in-memory cache persists throughout the user's session
+const cache = {};
+
+/*function to fetch data from the RAWG API with basic caching 
+caching prevents unnecessary API calls by storing previous responses
+this improves performance in many ways:
+1. Reduces network requests, saving bandwidth and API rate limits
+2. Provides instant data when revisiting the same content
+3. Makes the app feel more responsive by eliminating loading times for repeat requests
+*/
 async function fetchFromApi(endpoint) {
     try {
+        //check if already fetched this endpoint in this session
+        //if found in cache, return without making an API request
+        if (cache[endpoint]) {
+            console.log('Using cached data for:', endpoint);
+            return cache[endpoint];
+        }
+
+        //only fetch from network if data isn't in cache
+        console.log('Fetching fresh data for:', endpoint);
         const response = await fetch(`${BASE_URL}/${endpoint}`);
         if (!response.ok) {
             throw new Error(`API request failed with status ${response.status}`);
         }
-        return await response.json();
+        
+        const data = await response.json();
+        //store the response in cache for future use
+        cache[endpoint] = data;
+        
+        return data;
     } catch (error) {
         console.error('API fetch error:', error.message);
         throw error;

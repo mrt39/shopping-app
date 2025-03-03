@@ -11,7 +11,13 @@ export default function Carousel ({gameScreenshots}) {
                 {(gameScreenshots.gameScreenshots.slice(1)).map((screenshot) => { 
 
                 return <div key={screenshot.id} className="carousel-item">
-                <img src={screenshot.image} className="d-block w-100" alt="dz"/>
+                    {/*use loading="lazy" for improving performance by preventing image loading until the user switches to them*/}
+                    <img 
+                        src={screenshot.image} 
+                        className="d-block w-100" 
+                        loading="lazy" 
+                        alt="game screenshot"
+                    />
                 </div>   
                 })}
             </div>

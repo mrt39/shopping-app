@@ -2,7 +2,7 @@
 import Carousel from './Carousel';
 import GamePageDataSection from './GamePageDataSection';
 
-export default function GamePageContent ({gameDetails, price, gameScreenshots, handleAddtoCart, gamesInCart, stores, checkIfInCart}) {
+export default function GamePageContent ({gameDetails, price, gameScreenshots, handleAddToCart, gamesInCart, stores, checkIfInCart}) {
   return (
     <div id="gamePageContainer">
       <div id="carouselContainer"> 
@@ -20,7 +20,7 @@ export default function GamePageContent ({gameDetails, price, gameScreenshots, h
           : 
             <h3>
               <a href="#" 
-                onClick={() => handleAddtoCart(
+                onClick={() => handleAddToCart(
                   {gameName: gameDetails.name}, 
                   price.price, 
                   {imgUrl: gameScreenshots.gameScreenshots[0].image}
