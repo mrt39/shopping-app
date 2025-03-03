@@ -160,7 +160,6 @@ h1{
 @media (max-width: 750px) {
   #background-video { display: none; }
   body {
-    background: url("https://assets.codepen.io/6093409/river.jpg") no-repeat;
     background-size: cover;
   }
 }
@@ -584,13 +583,16 @@ p {
 
 #gamePageAddToCartDiv{
   width: 100%;
-  box-shadow: 0 0 0.1em var(--neon), 0 0 0.5em var(--neon), 0 0 1.5em var(--neon), 0 0 3em var(--neon) ;
-  clip-path: inset(-90px 0px 0px 0px);
-  text-shadow: 0 0 0.1em var(--neon), 0 0 0.5em var(--neon), 0 0 1em var(--neon) ;
+  box-shadow: 0 0 0.1em var(--neon), 0 0 0.5em var(--neon), 0 0 1.5em var(--neon), 0 0 3em var(--neon);
+  clip-path: inset(-90px 0px 0px 0px); 
+  text-shadow: 0 0 0.1em var(--neon), 0 0 0.5em var(--neon), 0 0 1em var(--neon);
   background: linear-gradient(to right,#D2E887, #007FFF);
   display: flex;
   justify-content: space-between;
   height: fit-content;
+  position: relative;
+  width: calc(100% + 1px); /* add 1px to cover the right border */
+  box-sizing: border-box; /* include border in width calculation */
 }
 
 #gamePageAddToCartDiv h3{
@@ -750,12 +752,15 @@ p {
 .footer p {
   background-color: #171d25 ;
   margin: 20px;
+  pointer-events: none; 
+  user-select: none;    
 }
 
 .footer p a {
   color: #dcdedf;
   background-color: #171d25 ;
-   
+  pointer-events: auto;
+  user-select: auto; 
 }
 
 .footer svg {

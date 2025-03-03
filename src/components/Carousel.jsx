@@ -1,9 +1,34 @@
 /* eslint-disable react/prop-types */
+import { useEffect, useRef } from 'react';
 
 export default function Carousel ({gameScreenshots}) {
+    const carouselRef = useRef(null);
+    
+    useEffect(() => {
+        //add auto-sliding functionality to carousel
+        const carouselElement = carouselRef.current;
+        if (carouselElement && typeof window !== 'undefined' && window.bootstrap) {
+            const carousel = new window.bootstrap.Carousel(carouselElement, {
+                interval: 2000,
+                ride: "carousel"
+            });
+            
+            //start the carousel
+            carousel.cycle();
+            
+            //cleanup function to dispose carousel when component unmounts
+            return () => {
+                carousel.dispose();
+            };
+        }
+    }, [gameScreenshots]); //restart when screenshots change
+
     return (
         <>
-            <div id="carousel" className="carousel slide">
+            <div id="carousel" 
+            ref={carouselRef} 
+            className="carousel slide"
+            >
             <div className="carousel-inner">
                 <div className="carousel-item active">
                 <img src={gameScreenshots.gameScreenshots[0].image} className="d-block w-100" alt="..."/>
