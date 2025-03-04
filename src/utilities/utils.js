@@ -42,3 +42,14 @@ export  function checkIfInCart(gameName, gamesInCart){
     return true 
   }
 }
+
+
+/*debounce function to limit how often a function is called */
+export function debounce(func, wait) {
+  let timeout;
+  return function(...args) {
+    const context = this;
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(context, args), wait);
+  };
+}
