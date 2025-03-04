@@ -12,7 +12,7 @@ const ItemCards = memo(function ItemCards({gameName, imgUrl, setOpen, handleClic
   const {handleAddToCart, gamesInCart } = useCart();
   
   //useCallback memoizes this click handler to prevent recreation on each render
-  //it prevents creating a brand new function on each render. Without it, a new function would be created on EVERY render of EACH card
+  //it prevents creating a brand new function on each render. Without it, a new function would be created on every render of each card
   //this also ensures that adding a game to the cart doesn't cause other item cards to re-render
   const handleAddToCartClick = useCallback(() => {
     handleAddToCart({gameName}, decidePrice({gameName}), {imgUrl});

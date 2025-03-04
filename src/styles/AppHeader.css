@@ -1,0 +1,35 @@
+.toolBar{
+    background-color: #171d25;
+    color: #dcdedf;
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+  }
+  
+  .infoIcon{
+    margin-left: 0.3em;
+    height: 1.5em !important;
+    width: 1.5em !important;
+    color: #fece21;
+    cursor: pointer;  
+  }
+  
+  .infoIcon:hover{
+    color: #dcdedf; 
+  }
+  
+  .popOverText{
+    margin: 5px;
+    padding: 5px;
+    width: 30rem;
+    text-wrap: wrap; 
+  }
+  
+  .dashBoardLogoImg{
+    height: 50px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+  }
+  
+  .offCanvasBadge{
+    margin-right: 1rem;
+  }

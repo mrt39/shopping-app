@@ -1,0 +1,132 @@
+.MuiPaper-elevation24 {
+    background-color: #171d25 !important;
+    margin-top: 3.5rem;
+    max-width: 80% !important;
+    color: #dcdedf;
+    min-width: 80% !important;
+  }
+  
+  #gameStoreLinksContainer{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    width: 98%;
+  }
+  
+  #gamePageAddToCartDiv{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  #gamePageAddToCartDiv h3{
+    margin-bottom: 0;
+  }
+  
+  #gamePageAddToCartDiv a{
+    color: var(--neon);
+    text-decoration: none;
+  }
+  
+  #gamePageContainer{
+    max-width: 95%;
+    margin: 1rem;
+    color: #dcdedf;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+  }
+  
+  #carouselContainer{
+    width: 50%;
+    margin-bottom: 1rem;
+  }
+  
+  #gameDescriptionContainer{
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #gameDescription{
+    text-align: left;
+  }
+  
+  #carouselContainer, #gameDescriptionContainer{
+    display: flex;
+    min-width: 40%;
+  }
+  
+  #gamePageGameTitle{
+    margin-bottom: 1.5rem;
+    align-self: start;
+  }
+  
+  #gamePageInCart{
+    color: rgb(146, 167, 71) !important;
+  }
+  
+  #gamePageStoreLinksText{
+    font-style: italic;
+    margin-top: 0.5rem;
+  }
+  
+  #storeIconsContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+    margin-left: 1rem;
+  }
+  
+  .storeLogo:hover{
+    transform: scale(1.2);
+  }
+  
+  .gamePageCloseBtnX{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+  }
+  
+  .gamePageCloseBtnX:hover{
+    color: var(--neon);
+  }
+  
+  .gamePageCloseBtn{
+    position: absolute !important;
+    top: 0 !important;
+    left: 10px !important;
+    color: #dcdedf !important;
+  }
+  
+  .MuiDialogActions-root{
+    padding: 0 !important;
+    position: relative;
+  }
+  
+  .gamePagaData{
+    margin: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .gamePagaDataH3{
+    margin-right: 6px;
+    margin-bottom: 0;
+    color: rgb(146, 167, 71) !important;
+    font-family: 'Encode Sans', sans-serif;
+  }
+  
+  .gamePagaData p{
+    margin: 0;
+    color: #fff;
+  }
+
+  .d-block{
+    height: 25rem;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 15px;
+  }

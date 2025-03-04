@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans&family=Encode+Sans+Condensed&family=Exo&family=Quicksand&family=Roboto+Condensed&display=swap');
+
+:root{
+  --neon: hsl(200,100%,50%);
+}
+
+body{
+  background-color: rgb(15, 16, 17) !important;
+  color: #c6d4df;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+#root {
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  color: #c6d4df;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+h1{
+  font-weight: bold !important;
+}
+
+h3 {
+  color: white;
+  font-size: 17px;
+  font-weight: 700;
+  margin-top: 9px;
+  margin-bottom: 4px;
+  margin-left: 5px;
+  font-family: 'Roboto Condensed', sans-serif;
+  align-self: flex-start;
+}
+
+p {
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 20px;
+  margin-top: 6px;
+  color: #dcdedf;
+  font-family: 'Roboto Condensed', sans-serif;
+
+  &.offcanvasPrice {
+    font-size: 14px;
+    position: absolute;
+    right: 5px;
+    bottom: 0px;
+    margin-bottom: 2px;
+  }
+}

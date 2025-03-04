@@ -3,7 +3,7 @@ import Dashboard from "./components/Dashboard.jsx";
 import StorePage from "./routes/StorePage";
 import ShoppingCart from "./routes/ShoppingCart"
 import HomePage from "./routes/HomePage"
-import './App.css'
+import './styles/index.css';
 import ErrorPage from "./components/ErrorPage";
 import { CartProvider } from "./contexts/CartContext";
 import { GamesProvider } from "./contexts/GamesContext";

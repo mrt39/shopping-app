@@ -1,0 +1,19 @@
+.storeDivident{
+    font-weight: bold !important;
+    font-size: 1rem !important;
+    text-align: left;
+    margin-right: 47px;
+  }
+  
+  .storePageNoGamesAlert{
+    margin-top: 10rem;
+  }
+  
+  .circularProgressIcon{
+    margin-top: 5rem;
+    margin-left: 2rem;
+  }
+  
+  .storeCardLink{
+    text-decoration: none;
+  }

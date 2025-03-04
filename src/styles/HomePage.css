@@ -1,0 +1,49 @@
+#homePageContainer{
+    margin-top: 10rem;
+    width: 100%;
+  }
+  
+  .search-button {
+    background: transparent;
+    border: none;
+    outline: none;
+    margin-left: -3rem;
+    color: white;
+  }
+  
+  .searchIcon {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+  }
+  
+  #background-video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+  
+  @media (max-width: 750px) {
+    #background-video { display: none; }
+    body {
+      background: url("https://i.imgur.com/zFdXGi8.jpg") no-repeat;
+      background-size: cover;
+    }
+  }
+  
+  .searchBarContainer{
+   width: 100%;
+   align-items: center;
+   display: flex;
+   justify-content: center;
+  }
+  
+  .d-flex{
+    width: 40%;
+  }
