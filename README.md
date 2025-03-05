@@ -1,5 +1,5 @@
 # Vapor - The Ultimate Game Store
-![preview](https://github.com/mrt39/shopping-app/assets/90144973/6b4e73e2-ead3-42e9-ba51-33fb95e0b950)
+https://github.com/mrt39/shopping-app/assets/90144973/6b4e73e2-ead3-42e9-ba51-33fb95e0b950
 
 <h2>🖥️ Live Preview</h2>
 
